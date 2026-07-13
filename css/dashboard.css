@@ -240,23 +240,46 @@
   gap: 8px;
   text-decoration: none;
   flex: 1;
+  min-width: 0;
 }
 
 .db-header-brand .brand-logo-sm {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  background: var(--pn-blue);
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 14px;
+  color: var(--pn-ink);
+  font-size: 17px;
+  box-shadow: var(--shadow-sm);
+}
+
+.db-header-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .db-header-brand .brand-name-sm {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--pn-ink);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.db-header-brand .brand-tag-sm {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--pn-ink);
+  white-space: nowrap;
 }
 
 .db-page-title {
@@ -698,6 +721,24 @@
   .db-welcome-meta { gap: 16px; }
   .db-header-actions .db-profile-btn .db-profile-name,
   .db-header-actions .db-profile-btn .db-profile-role { display: none; }
+  .db-header-actions .db-profile-btn {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+  .db-header-actions .db-profile-btn > div:not(.db-profile-avatar),
+  .db-header-actions .db-profile-btn.dropdown-toggle::after {
+    display: none !important;
+  }
+  .db-header-actions .db-profile-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    margin: 0 !important;
+  }
 }
 
 /* ================================================================
@@ -1760,21 +1801,52 @@
   text-align: left;
 }
 
-.db-menu-toggle-pill {
-  margin-left: auto;
-  min-width: 42px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.18);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  text-align: center;
+.db-menu-control-row {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px 4px;
 }
 
-[dir="rtl"] .db-menu-toggle-pill {
-  margin-left: 0;
-  margin-right: auto;
+.db-menu-square-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--pn-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.db-menu-square-btn span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.db-menu-control-row .db-menu-square-btn:last-child span {
+  font-size: 12px;
+  letter-spacing: .02em;
+}
+
+.db-menu-square-btn:hover,
+.db-menu-square-btn:focus-visible {
+  background: var(--pn-ink);
+  color: #fff;
+  border-color: var(--pn-ink);
+}
+
+[data-theme="dark"] .db-menu-square-btn {
+  background: #fff;
+  color: var(--pn-ink);
+  border-color: rgba(255,255,255,.22);
 }
 
 .db-icon-btn:hover,
@@ -1790,11 +1862,264 @@
 }
 
 @media (max-width: 991.98px) {
+  .db-header-theme-toggle,
   .db-header-dir-toggle {
-    display: none !important;
+    display: flex !important;
   }
 
   .db-mobile-menu-control {
-    display: block;
+    display: none !important;
+  }
+
+  .db-mobile-menu-control.db-menu-control-row {
+    display: none !important;
+  }
+}
+
+/* Final mobile dashboard header: brand stays inside sidebar menu only. */
+@media (max-width: 991.98px) {
+  #db-header .db-header-brand {
+    display: none !important;
+  }
+
+  #db-header {
+    justify-content: space-between !important;
+  }
+
+  #db-header .db-header-actions {
+    margin-left: auto !important;
+    gap: 8px !important;
+  }
+
+  [dir="rtl"] #db-header .db-header-actions {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Final dashboard sidebar brand: match main site logo treatment. */
+#db-sidebar .db-brand-logo,
+[data-theme="dark"] #db-sidebar .db-brand-logo {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-sm) !important;
+  color: var(--pn-ink) !important;
+}
+
+#db-sidebar .db-brand-logo i,
+[data-theme="dark"] #db-sidebar .db-brand-logo i {
+  color: var(--pn-ink) !important;
+  font-size: 17px !important;
+}
+
+#db-sidebar .db-brand-text .db-brand-name,
+#db-sidebar .db-brand-text .db-brand-tag {
+  color: var(--pn-ink) !important;
+  opacity: 1 !important;
+}
+
+#db-sidebar .db-brand-text .db-brand-name,
+[data-theme="dark"] #db-sidebar .db-brand-text .db-brand-name {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+
+#db-sidebar .db-brand-text .db-brand-tag,
+[data-theme="dark"] #db-sidebar .db-brand-text .db-brand-tag {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+
+#db-sidebar .db-brand-text,
+[data-theme="dark"] #db-sidebar .db-brand-text {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+  max-width: calc(var(--db-sidebar-w) - 92px) !important;
+}
+
+[data-theme="dark"] #db-sidebar .db-brand-text .db-brand-name,
+[data-theme="dark"] #db-sidebar .db-brand-text .db-brand-tag {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+}
+
+/* Final dashboard spacing: keep only a small gap below the fixed header. */
+#db-content {
+  padding-top: 6px !important;
+}
+
+@media (max-width: 991.98px) {
+  #db-content {
+    padding-top: 6px !important;
+  }
+}
+
+/* Dashboard welcome meta: center the right stats block in the banner. */
+@media (min-width: 768px) {
+  .db-welcome .row.align-items-center > .col-md-4 {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .db-welcome .db-welcome-meta {
+    width: 100% !important;
+    max-width: 190px !important;
+    margin: 0 auto !important;
+    padding-top: 0 !important;
+    border-top: 0 !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 18px !important;
+  }
+}
+
+/* Dashboard overview stats: add breathing room below card icons. */
+#sec-overview > .row.g-3 .db-stat-icon {
+  margin-bottom: 18px !important;
+}
+
+#sec-overview > .row.g-3 .db-stat-value {
+  margin-top: 2px !important;
+}
+
+/* Mobile welcome metrics: keep the third stat centered below the first row. */
+@media (max-width: 575.98px) {
+  .db-welcome .db-welcome-meta {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(92px, 1fr)) !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    gap: 16px 20px !important;
+  }
+
+  .db-welcome .db-welcome-meta > div {
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+
+  .db-welcome .db-welcome-meta > div:nth-child(3) {
+    grid-column: 1 / -1 !important;
+    width: max-content !important;
+    max-width: 100% !important;
+    justify-self: center !important;
+  }
+
+  .db-welcome .db-meta-value,
+  .db-welcome .db-meta-label {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #db-content {
+    padding-top: 6px !important;
+  }
+}
+
+/* Dashboard upload list: keep recent file rows aligned on mobile. */
+@media (max-width: 575.98px) {
+  .db-upload-file-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+
+  .db-upload-file-info {
+    width: 100% !important;
+    min-width: 0 !important;
+    align-items: flex-start !important;
+  }
+
+  .db-upload-file-info > div:last-child {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .db-upload-file-actions {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .db-upload-file-actions .btn-pn:first-child {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+  }
+
+  .db-upload-file-actions .btn-pn:last-child {
+    width: 38px !important;
+    min-width: 38px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: center !important;
+  }
+}
+
+/* Dashboard upload list: tablet layout keeps filename and actions readable. */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .db-upload-file-row {
+    gap: 12px !important;
+  }
+
+  .db-upload-file-info {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    max-width: calc(100% - 132px) !important;
+  }
+
+  .db-upload-file-info > div:last-child {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .db-upload-file-actions {
+    flex: 0 0 auto !important;
+    width: 118px !important;
+    min-width: 118px !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+  }
+
+  .db-upload-file-actions .btn-pn:first-child {
+    width: 72px !important;
+    min-width: 72px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: center !important;
+  }
+
+  .db-upload-file-actions .btn-pn:last-child {
+    width: 34px !important;
+    min-width: 34px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: center !important;
   }
 }
