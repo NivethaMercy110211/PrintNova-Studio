@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – PrintNova Studio | My Print Jobs</title>
+  <meta name="description" content="PrintNova Studio customer dashboard — upload artwork, configure specs, track orders, view invoices, and reorder past print jobs." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2.1" />
+  <link rel="stylesheet" href="css/dashboard.css?v=2.1" />
+</head>
+<body>
+
+<!-- ─────────── SIDEBAR ─────────── -->
+<aside id="db-sidebar" role="navigation" aria-label="Dashboard Navigation">
+  <a href="index.html" class="db-brand" aria-label="PrintNova Studio Home">
+    <div class="db-brand-logo"><i class="fa-solid fa-print"></i></div>
+    <div class="db-brand-text">
+      <div class="db-brand-name">PrintNova Studio</div>
+      <div class="db-brand-tag">Print Smarter. Brand Better.</div>
+    </div>
+  </a>
+
+  <div class="db-nav-wrap">
+    <ul class="db-nav list-unstyled">
+      <li><a href="#" class="nav-link active" id="nav-dashboard"><span class="db-nav-icon"><i class="fa-solid fa-gauge-high"></i></span>Dashboard</a></li>
+      <li><a href="#" class="nav-link" id="nav-upload" onclick="showSection('upload',this)"><span class="db-nav-icon"><i class="fa-solid fa-cloud-arrow-up"></i></span>Upload Artwork</a></li>
+      <li><a href="#" class="nav-link" id="nav-designs" onclick="showSection('designs',this)"><span class="db-nav-icon"><i class="fa-solid fa-images"></i></span>Saved Designs</a></li>
+      <li><a href="#" class="nav-link" id="nav-jobs" onclick="showSection('jobs',this)"><span class="db-nav-icon"><i class="fa-solid fa-print"></i></span>My Print Jobs<span class="db-nav-badge">5</span></a></li>
+      <li><a href="#" class="nav-link" id="nav-track" onclick="showSection('track',this)"><span class="db-nav-icon"><i class="fa-solid fa-truck"></i></span>Track Orders</a></li>
+      <li><a href="#" class="nav-link" id="nav-reorder" onclick="showSection('reorder',this)"><span class="db-nav-icon"><i class="fa-solid fa-rotate-right"></i></span>Reorder Jobs</a></li>
+      <li><a href="#" class="nav-link" id="nav-invoices" onclick="showSection('invoices',this)"><span class="db-nav-icon"><i class="fa-solid fa-file-invoice-dollar"></i></span>Invoices</a></li>
+      <li class="db-mobile-menu-control">
+        <button type="button" class="nav-link db-menu-toggle-btn" data-dir-toggle>
+          <span class="db-nav-icon"><i class="fa-solid fa-right-left"></i></span>
+          <span>Direction</span>
+          <span class="db-menu-toggle-pill" data-dir-icon>RTL</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+
+<!-- Overlay (mobile) -->
+<div id="db-overlay" onclick="closeSidebar()"></div>
+
+<!-- ─────────── MAIN WRAPPER ─────────── -->
+<div id="db-wrapper">
+
+  <!-- DASHBOARD HEADER -->
+  <header id="db-header">
+    <button id="db-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <!-- Brand (mobile) -->
+    <a class="db-header-brand" href="index.html">
+      <div class="brand-logo-sm"><i class="fa-solid fa-print"></i></div>
+      <span class="brand-name-sm">PrintNova Studio</span>
+    </a>
+    <!-- Page title (desktop) -->
+    <div class="db-page-title">
+      <h5 id="db-page-heading">Dashboard</h5>
+      <p id="db-page-sub">Welcome back, Rajesh 👋</p>
+    </div>
+
+    <div class="db-header-actions">
+      <!-- Theme toggle -->
+      <button class="db-icon-btn" data-theme-toggle data-theme-icon aria-label="Toggle theme" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+      <!-- RTL toggle -->
+      <button class="db-icon-btn db-header-dir-toggle" data-dir-toggle data-dir-icon aria-label="Toggle direction" title="Toggle Direction"><i class="fa-solid fa-arrow-left-to-bracket"></i></button>
+      <!-- Profile -->
+      <div class="dropdown">
+        <button class="db-profile-btn dropdown-toggle" type="button" id="profileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="db-profile-avatar">RK</div>
+          <div>
+            <div class="db-profile-name">Rajesh Kumar</div>
+            <div class="db-profile-role">Std. Account</div>
+          </div>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end db-profile-menu" aria-labelledby="profileMenuButton">
+          <li><button class="dropdown-item" type="button" onclick="showSection('profile',document.getElementById('profileMenuButton'))"><i class="fa-solid fa-user-gear"></i> Profile Settings</button></li>
+          <li><a class="dropdown-item" href="contact.html"><i class="fa-solid fa-headset"></i> Support</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><button class="dropdown-item text-danger" type="button" onclick="openLogoutModal()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- DASHBOARD CONTENT -->
+  <main id="db-content">
+
+    <!-- ═══ SECTION: OVERVIEW (default) ═══ -->
+    <div id="sec-overview">
+      <!-- Welcome Banner -->
+      <div class="db-welcome" style="background-image: linear-gradient(var(--cta-overlay-1), var(--cta-overlay-2)), url('images/banners/dashboard.png'), url('file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/43d818c6-9e5e-461c-b8e6-51fbe6b5acbc/banner_dashboard_1783618966367.png'); background-size: cover; background-position: center; background-repeat: no-repeat;" data-aos="fade-up">
+        <div class="row align-items-center g-4">
+          <div class="col-md-8">
+            <div class="db-welcome-greeting">Good morning ☀️</div>
+            <div class="db-welcome-name">Welcome back, Rajesh Kumar!</div>
+            <div class="db-welcome-msg">You have 2 print jobs in progress and 1 awaiting your approval. Upload new artwork to get started.</div>
+            <div class="d-flex gap-3 flex-wrap mt-3">
+              <a href="#" onclick="showSection('upload',document.getElementById('nav-upload'))" class="btn-pn btn-pn-white" style="font-size:13px;padding:8px 18px;"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Artwork</a>
+              <a href="#" onclick="showSection('jobs',document.getElementById('nav-jobs'))" class="btn-pn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);font-size:13px;padding:8px 18px;"><i class="fa-solid fa-print"></i> View Jobs</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="db-welcome-meta">
+              <div><div class="db-meta-value">12</div><div class="db-meta-label">Total Orders</div></div>
+              <div><div class="db-meta-value">2</div><div class="db-meta-label">In Progress</div></div>
+              <div><div class="db-meta-value">₹14.2K</div><div class="db-meta-label">Total Spent</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="db-stat">
+            <div class="db-stat-icon" style="background:var(--pn-blue-light);color:var(--pn-blue);"><i class="fa-solid fa-print"></i></div>
+            <div class="db-stat-bg-icon"><i class="fa-solid fa-print"></i></div>
+            <div class="db-stat-value">12</div>
+            <div class="db-stat-label">Total Orders</div>
+            <div class="db-stat-trend" style="color:var(--pn-blue);"><i class="fa-solid fa-arrow-trend-up"></i> +3 this month</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+          <div class="db-stat">
+            <div class="db-stat-icon" style="background:var(--pn-blue-light);color:var(--pn-blue);"><i class="fa-solid fa-spinner"></i></div>
+            <div class="db-stat-bg-icon"><i class="fa-solid fa-spinner"></i></div>
+            <div class="db-stat-value">2</div>
+            <div class="db-stat-label">In Progress</div>
+            <div class="db-stat-trend" style="color:var(--pn-blue);"><i class="fa-solid fa-clock"></i> Est. 24h</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+          <div class="db-stat">
+            <div class="db-stat-icon" style="background:var(--pn-blue-light);color:var(--pn-blue);"><i class="fa-solid fa-check-circle"></i></div>
+            <div class="db-stat-bg-icon"><i class="fa-solid fa-check-circle"></i></div>
+            <div class="db-stat-value">10</div>
+            <div class="db-stat-label">Completed</div>
+            <div class="db-stat-trend" style="color:var(--pn-blue);"><i class="fa-solid fa-arrow-trend-up"></i> All delivered</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+          <div class="db-stat">
+            <div class="db-stat-icon" style="background:var(--pn-blue-light);color:var(--pn-blue);"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            <div class="db-stat-bg-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            <div class="db-stat-value">₹14.2K</div>
+            <div class="db-stat-label">Total Spent</div>
+            <div class="db-stat-trend" style="color:var(--pn-blue);"><i class="fa-solid fa-arrow-trend-up"></i> +₹3.1K this month</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Current Job Progress -->
+        <div class="col-lg-4" data-aos="fade-up">
+          <div class="db-stat" style="height:100%;">
+            <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:18px;"><i class="fa-solid fa-timeline" style="color:var(--pn-blue);margin-right:8px;"></i>Current Job Progress</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:12px;">Order #PN-2407 – Corporate Brochure</div>
+            <div class="db-timeline">
+              <div class="db-tl-step">
+                <div class="db-tl-icon tl-done"><i class="fa-solid fa-check"></i></div>
+                <div><div class="db-tl-title">Order Confirmed</div><div class="db-tl-time">Yesterday, 10:30 AM</div></div>
+              </div>
+              <div class="db-tl-step">
+                <div class="db-tl-icon tl-done"><i class="fa-solid fa-check"></i></div>
+                <div><div class="db-tl-title">Artwork Approved</div><div class="db-tl-time">Yesterday, 2:15 PM</div></div>
+              </div>
+              <div class="db-tl-step">
+                <div class="db-tl-icon tl-active"><i class="fa-solid fa-print"></i></div>
+                <div>
+                  <div class="db-tl-title">Printing in Progress</div>
+                  <div style="height:4px;background:var(--border-color);border-radius:2px;margin-top:6px;overflow:hidden;max-width:160px;"><div style="height:100%;width:65%;background:var(--pn-blue);border-radius:2px;"></div></div>
+                  <div class="db-tl-time">65% complete</div>
+                </div>
+              </div>
+              <div class="db-tl-step">
+                <div class="db-tl-icon tl-wait"><i class="fa-solid fa-truck"></i></div>
+                <div><div class="db-tl-title">Out for Delivery</div><div class="db-tl-desc">Expected: Tomorrow</div></div>
+              </div>
+              <div class="db-tl-step">
+                <div class="db-tl-icon tl-wait"><i class="fa-solid fa-box"></i></div>
+                <div><div class="db-tl-title">Delivered</div><div class="db-tl-desc">Estimated: Jul 11</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="db-stat" style="height:100%;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+              <div style="font-size:15px;font-weight:700;color:var(--text-primary);"><i class="fa-solid fa-clock-rotate-left" style="color:var(--pn-blue);margin-right:8px;"></i>Recent Orders</div>
+              <a href="#" onclick="showSection('jobs',document.getElementById('nav-jobs'))" style="font-size:13px;color:var(--pn-blue);text-decoration:none;font-weight:500;">View All →</a>
+            </div>
+            <div class="table-responsive">
+              <table style="width:100%;border-collapse:collapse;" aria-label="Recent orders">
+                <thead><tr style="border-bottom:1px solid var(--border-color);"><th style="padding:8px 10px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);text-align:left;">Order #</th><th style="padding:8px 10px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Product</th><th style="padding:8px 10px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Qty</th><th style="padding:8px 10px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Amount</th><th class="col-center" style="padding:8px 10px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Status</th></tr></thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2407</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">Corporate Brochure</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">500</td><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">₹3,499</td><td class="col-center" style="padding:11px 10px;"><span class="db-status-badge" style="background:var(--pn-blue-light);color:var(--pn-blue);">Printing</span></td></tr>
+                  <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2406</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">Business Cards</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">1,000</td><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">₹1,199</td><td class="col-center" style="padding:11px 10px;"><span class="db-status-badge" style="background:rgba(6,182,212,.12);color:#0284C7;">Shipped</span></td></tr>
+                  <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2405</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">Outdoor Banner</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">8 sq.ft</td><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">₹4,792</td><td class="col-center" style="padding:11px 10px;"><span class="db-status-badge" style="background:var(--pn-blue-light);color:var(--pn-blue);">Delivered</span></td></tr>
+                  <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2404</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">A5 Flyers</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">2,000</td><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">₹3,299</td><td class="col-center" style="padding:11px 10px;"><span class="db-status-badge" style="background:var(--pn-blue-light);color:var(--pn-blue);">Delivered</span></td></tr>
+                  <tr><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2403</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">Packaging Labels</td><td style="padding:11px 10px;font-size:13px;color:var(--text-secondary);">5 rolls</td><td style="padding:11px 10px;font-size:13px;font-weight:600;color:var(--text-primary);">₹1,745</td><td class="col-center" style="padding:11px 10px;"><span class="db-status-badge" style="background:var(--pn-blue-light);color:var(--pn-blue);">Delivered</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="row g-3" data-aos="fade-up">
+        <div class="col-12"><div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:4px;"><i class="fa-solid fa-bolt" style="color:var(--pn-blue);margin-right:8px;"></i>Quick Actions</div></div>
+        <div class="col-6 col-md-3">
+          <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;text-align:center;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm);" onclick="showSection('upload',document.getElementById('nav-upload'))" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='var(--shadow-sm)';this.style.transform='none'">
+            <div style="font-size:26px;color:var(--pn-blue);margin-bottom:8px;"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Upload Artwork</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;text-align:center;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm);" onclick="showSection('track',document.getElementById('nav-track'))" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='var(--shadow-sm)';this.style.transform='none'">
+            <div style="font-size:26px;color:var(--pn-blue);margin-bottom:8px;"><i class="fa-solid fa-truck-fast"></i></div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Track Orders</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;text-align:center;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm);" onclick="showSection('reorder',document.getElementById('nav-reorder'))" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='var(--shadow-sm)';this.style.transform='none'">
+            <div style="font-size:26px;color:var(--pn-blue);margin-bottom:8px;"><i class="fa-solid fa-rotate-right"></i></div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Reorder</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;text-align:center;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm);" onclick="showSection('invoices',document.getElementById('nav-invoices'))" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='var(--shadow-sm)';this.style.transform='none'">
+            <div style="font-size:26px;color:var(--pn-blue);margin-bottom:8px;"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary);">Invoices</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /overview -->
+
+    <!-- ═══ SECTION: UPLOAD ARTWORK ═══ -->
+    <div id="sec-upload" style="display:none;">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <div class="db-stat" style="height: auto !important;">
+            <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:20px;"><i class="fa-solid fa-cloud-arrow-up" style="color:var(--pn-blue);margin-right:8px;"></i>Upload Artwork File</div>
+            <div class="db-upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click();" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleDrop(event)">
+              <input type="file" id="fileInput" style="display:none;" accept=".pdf,.ai,.psd,.png,.tiff,.eps" onchange="handleFileSelect(this)" />
+              <div class="db-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Drag &amp; Drop Your File Here</div>
+              <div style="font-size:13.5px;color:var(--text-muted);margin-bottom:16px;">PDF, AI, PSD, PNG, TIFF, EPS (Max 500MB)</div>
+              <div class="d-flex flex-wrap gap-2 justify-content-center mb-4">
+                <span style="background:var(--pn-blue-light);color:var(--pn-blue);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">PDF</span>
+                <span style="background:var(--pn-orange-light);color:var(--pn-blue);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">AI</span>
+                <span style="background:var(--pn-blue-light);color:var(--pn-blue);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">PSD</span>
+                <span style="background:var(--pn-blue-light);color:var(--pn-blue);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">PNG</span>
+                <span style="background:rgba(6,182,212,.1);color:#0284C7;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">TIFF</span>
+                <span style="background:rgba(250,204,21,.15);color:#CA8A04;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;">EPS</span>
+              </div>
+              <div class="btn-pn btn-pn-primary" style="pointer-events:none;"><i class="fa-solid fa-folder-open"></i> Choose File</div>
+            </div>
+            <div id="filePreview" style="display:none;margin-top:16px;padding:14px 16px;background:var(--pn-blue-light);border-radius:10px;border:1px solid var(--pn-blue);align-items:center;gap:12px;">
+              <i class="fa-solid fa-file-check" style="font-size:22px;color:var(--pn-blue);"></i>
+              <div style="flex:1;">
+                <div id="fileName" style="font-size:14px;font-weight:700;color:var(--text-primary);"></div>
+                <div id="fileSize" style="font-size:12px;color:var(--text-muted);"></div>
+              </div>
+              <i class="fa-solid fa-check-circle" style="font-size:20px;color:var(--pn-blue);"></i>
+            </div>
+          </div>
+
+          <!-- RECENT UPLOADS LIST -->
+          <div class="db-stat mt-4" style="height: auto !important;">
+            <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:16px;"><i class="fa-solid fa-folder-open" style="color:var(--pn-blue);margin-right:8px;"></i>Recent Uploaded Files</div>
+            <div class="d-flex flex-column gap-3">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:10px;">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:36px;height:36px;border-radius:6px;background:rgba(239, 68, 68, 0.1);color:#EF4444;display:flex;align-items:center;justify-content:center;font-size:18px;"><i class="fa-solid fa-file-pdf"></i></div>
+                  <div style="min-width:0;">
+                    <div style="font-size:13px;font-weight:700;color:var(--text-primary);text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">business_card_print_ready.pdf</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">14.2 MB · Uploaded Jul 9, 2026</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button onclick="showToast('Loading design settings...','info')" class="btn-pn btn-pn-outline" style="font-size:11px;padding:5px 12px;white-space:nowrap;">Use File</button>
+                  <button onclick="showToast('File deleted','info')" class="btn-pn btn-pn-outline text-danger" style="font-size:11px;padding:5px 10px;border-color:rgba(239, 68, 68, 0.3);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:10px;">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:36px;height:36px;border-radius:6px;background:rgba(249, 115, 22, 0.1);color:#F97316;display:flex;align-items:center;justify-content:center;font-size:18px;"><i class="fa-solid fa-file-image"></i></div>
+                  <div style="min-width:0;">
+                    <div style="font-size:13px;font-weight:700;color:var(--text-primary);text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">banner_outdoor_v2.ai</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">48.7 MB · Uploaded Jul 4, 2026</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button onclick="showToast('Loading design settings...','info')" class="btn-pn btn-pn-outline" style="font-size:11px;padding:5px 12px;white-space:nowrap;">Use File</button>
+                  <button onclick="showToast('File deleted','info')" class="btn-pn btn-pn-outline text-danger" style="font-size:11px;padding:5px 10px;border-color:rgba(239, 68, 68, 0.3);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:10px;">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:36px;height:36px;border-radius:6px;background:rgba(59, 130, 246, 0.1);color:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:18px;"><i class="fa-solid fa-file-image"></i></div>
+                  <div style="min-width:0;">
+                    <div style="font-size:13px;font-weight:700;color:var(--text-primary);text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">flyer_a5_event_front.png</div>
+                    <div style="font-size:11.5px;color:var(--text-muted);">4.5 MB · Uploaded Jun 28, 2026</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button onclick="showToast('Loading design settings...','info')" class="btn-pn btn-pn-outline" style="font-size:11px;padding:5px 12px;white-space:nowrap;">Use File</button>
+                  <button onclick="showToast('File deleted','info')" class="btn-pn btn-pn-outline text-danger" style="font-size:11px;padding:5px 10px;border-color:rgba(239, 68, 68, 0.3);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="db-stat">
+            <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:20px;"><i class="fa-solid fa-sliders" style="color:var(--pn-blue);margin-right:8px;"></i>Print Specifications</div>
+            <form id="specForm" onsubmit="submitOrder(event)">
+              <div class="mb-3"><label class="pn-form-label">Product Type *</label><select class="spec-select" required><option value="">Select product...</option><option>Business Cards</option><option>Brochures (Tri-fold)</option><option>Flyers A5</option><option>Flyers A4</option><option>Flex Banner</option><option>Roll-Up Standee</option><option>Packaging Labels</option><option>Posters</option></select></div>
+              <div class="row g-3 mb-3">
+                <div class="col-6"><label class="pn-form-label">Paper Type *</label><select class="spec-select" required><option>Art Paper</option><option>Matte</option><option>Gloss</option><option>Kraft</option><option>Silk</option></select></div>
+                <div class="col-6"><label class="pn-form-label">Finish *</label><select class="spec-select" required><option>Matte Lamination</option><option>Gloss Lamination</option><option>Spot UV</option><option>Foil Stamping</option><option>No Lamination</option></select></div>
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-6"><label class="pn-form-label">Quantity *</label><input type="number" class="spec-select" min="1" placeholder="e.g. 500" required /></div>
+                <div class="col-6"><label class="pn-form-label">GSM / Weight</label><select class="spec-select"><option>130gsm</option><option>170gsm</option><option>300gsm</option><option>350gsm</option><option>400gsm</option></select></div>
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-6"><label class="pn-form-label">Dimensions / Size *</label><select class="spec-select" required><option>Standard (3.5" x 2")</option><option>A4 (210 x 297 mm)</option><option>A5 (148 x 210 mm)</option><option>6ft x 3ft Banner</option><option>Custom Size</option></select></div>
+                <div class="col-6"><label class="pn-form-label">Color Mode *</label><select class="spec-select" required><option>Double-sided CMYK</option><option>Single-sided CMYK</option><option>Double-sided B&W</option><option>Single-sided B&W</option></select></div>
+              </div>
+              <div class="mb-3"><label class="pn-form-label">Delivery Option *</label><select class="spec-select" required><option>Standard (3–5 days)</option><option>Express (24 hours)</option><option>Rush Print (6 hours)</option><option>Store Pickup (Free)</option></select></div>
+              <div class="mb-4"><label class="pn-form-label">Special Instructions</label><textarea class="spec-select" rows="5" placeholder="Any specific requirements..." style="resize:none;"></textarea></div>
+              <button type="submit" class="btn-pn btn-pn-primary w-100 justify-content-center"><i class="fa-solid fa-cart-plus"></i> Place Order</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION: MY PRINT JOBS ═══ -->
+    <div id="sec-jobs" style="display:none;">
+      <div class="db-stat">
+        <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:20px;"><i class="fa-solid fa-print" style="color:var(--pn-blue);margin-right:8px;"></i>My Print Jobs</div>
+        <div class="table-responsive">
+          <table style="width:100%;border-collapse:collapse;" aria-label="Print jobs">
+            <thead><tr style="background:var(--bg-surface-2);border-bottom:1px solid var(--border-color);"><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);text-align:left;">Order</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Product</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Specs</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Amount</th><th class="col-center" style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Status</th><th class="col-center" style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Action</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2407</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">Corporate Brochure</td><td style="padding:12px 14px;font-size:12px;color:var(--text-muted);">500 pcs · Tri-fold · Matte</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹3,499</td><td class="col-center" style="padding:12px 14px;"><span class="db-status-badge" style="background:var(--pn-blue-light);color:var(--pn-blue);">Printing</span></td><td class="col-center" style="padding:12px 14px;"><a href="#" onclick="showSection('track',document.getElementById('nav-track'))" class="btn-pn btn-pn-outline">Track</a></td></tr>
+              <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2406</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">Business Cards (Spot UV)</td><td style="padding:12px 14px;font-size:12px;color:var(--text-muted);">1000 pcs · 350gsm · Spot UV</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹5,990</td><td class="col-center" style="padding:12px 14px;"><span class="db-status-badge" style="background:rgba(6,182,212,.12);color:#3f6f8f;">Shipped</span></td><td class="col-center" style="padding:12px 14px;"><a href="#" onclick="showSection('track',document.getElementById('nav-track'))" class="btn-pn btn-pn-outline">Track</a></td></tr>
+              <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2405</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">Outdoor Flex Banner</td><td style="padding:12px 14px;font-size:12px;color:var(--text-muted);">8 sq.ft · 440gsm · UV Ink</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹4,792</td><td class="col-center" style="padding:12px 14px;"><span class="db-status-badge" style="background:var(--pn-blue-light);color:var(--pn-blue);">Delivered</span></td><td class="col-center" style="padding:12px 14px;"><button onclick="showToast('Reorder placed for PN-2405!','success')" class="btn-pn btn-pn-outline">Reorder</button></td></tr>
+              <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2404</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">A5 Flyers (Gloss)</td><td style="padding:12px 14px;font-size:12px;color:var(--text-muted);">2000 pcs · 130gsm · Gloss</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹3,299</td><td class="col-center" style="padding:12px 14px;"><span class="db-status-badge" style="background:var(--pn-blue-light);color:var(--pn-blue);">Delivered</span></td><td class="col-center" style="padding:12px 14px;"><button onclick="showToast('Reorder placed for PN-2404!','success')" class="btn-pn btn-pn-outline">Reorder</button></td></tr>
+              <tr><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">PN-2403</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">Packaging Labels</td><td style="padding:12px 14px;font-size:12px;color:var(--text-muted);">5 rolls · Gloss vinyl</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹1,745</td><td class="col-center" style="padding:12px 14px;"><span class="db-status-badge" style="background:var(--pn-blue-light);color:var(--pn-blue);">Delivered</span></td><td class="col-center" style="padding:12px 14px;"><button onclick="showToast('Reorder placed for PN-2403!','success')" class="btn-pn btn-pn-outline">Reorder</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION: TRACK ORDERS ═══ -->
+    <div id="sec-track" style="display:none;">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="db-stat">
+            <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Track Your Order</div>
+            <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">Enter your order number or select a recent job below.</div>
+            <div class="d-flex gap-2 mb-4">
+              <input type="text" class="spec-select" style="flex:1;" placeholder="e.g. PN-2407" value="PN-2407" id="trackInput" />
+              <button class="btn-pn btn-pn-primary" onclick="trackOrder(document.getElementById('trackInput').value.trim().toUpperCase())"><i class="fa-solid fa-search"></i></button>
+            </div>
+            <div class="d-flex flex-column gap-2">
+              <div class="track-list-item" style="padding:10px 14px;background:var(--bg-surface-2);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-primary);border:1.5px solid var(--pn-blue);" onclick="trackOrder('PN-2407')">PN-2407 – Corporate Brochure</div>
+              <div class="track-list-item" style="padding:10px 14px;background:var(--bg-surface-2);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-primary);border:1px solid var(--border-color);" onclick="trackOrder('PN-2406')">PN-2406 – Business Cards</div>
+              <div class="track-list-item" style="padding:10px 14px;background:var(--bg-surface-2);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-primary);border:1px solid var(--border-color);" onclick="trackOrder('PN-2405')">PN-2405 – Outdoor Banner</div>
+              <div class="track-list-item" style="padding:10px 14px;background:var(--bg-surface-2);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-primary);border:1px solid var(--border-color);" onclick="trackOrder('PN-2404')">PN-2404 – A5 Flyers</div>
+              <div class="track-list-item" style="padding:10px 14px;background:var(--bg-surface-2);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-primary);border:1px solid var(--border-color);" onclick="trackOrder('PN-2403')">PN-2403 – Packaging Labels</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="db-stat">
+            <div id="trackOrderTitle" style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Order #PN-2407 Status</div>
+            <div id="trackOrderSpecs" style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">Corporate Brochure · 500 pcs · Tri-fold · Matte Lamination</div>
+            <div class="db-timeline" id="trackTimeline">
+              <div class="db-tl-step"><div class="db-tl-icon tl-done"><i class="fa-solid fa-check"></i></div><div><div class="db-tl-title">Order Confirmed &amp; Payment Received</div><div class="db-tl-desc">Your order has been confirmed and payment processed.</div><div class="db-tl-time">Jul 9, 2026 · 10:30 AM</div></div></div>
+              <div class="db-tl-step"><div class="db-tl-icon tl-done"><i class="fa-solid fa-check"></i></div><div><div class="db-tl-title">Artwork Preflight Check Passed</div><div class="db-tl-desc">Your file has been checked and approved for print.</div><div class="db-tl-time">Jul 9, 2026 · 2:15 PM</div></div></div>
+              <div class="db-tl-step"><div class="db-tl-icon tl-active"><i class="fa-solid fa-print"></i></div><div><div class="db-tl-title">Printing in Progress — 65%</div><div class="db-tl-desc">Your job is on press. Estimated completion: 6 hours.</div><div style="height:4px;background:var(--border-color);border-radius:2px;margin-top:8px;overflow:hidden;max-width:240px;"><div style="height:100%;width:65%;background:var(--pn-blue);border-radius:2px;"></div></div><div class="db-tl-time">Jul 10, 2026 · In Progress</div></div></div>
+              <div class="db-tl-step"><div class="db-tl-icon tl-wait"><i class="fa-solid fa-box"></i></div><div><div class="db-tl-title">Finishing &amp; Quality Check</div><div class="db-tl-desc">Lamination and cutting — pending after print completion.</div><div class="db-tl-time">Estimated: Jul 10 Evening</div></div></div>
+              <div class="db-tl-step"><div class="db-tl-icon tl-wait"><i class="fa-solid fa-truck"></i></div><div><div class="db-tl-title">Dispatched for Delivery</div><div class="db-tl-desc">Package will be handed to courier after QC.</div><div class="db-tl-time">Estimated: Jul 11, 2026</div></div></div>
+              <div class="db-tl-step"><div class="db-tl-icon tl-wait"><i class="fa-solid fa-home"></i></div><div><div class="db-tl-title">Delivered</div><div class="db-tl-desc">Delivery to registered address.</div><div class="db-tl-time">Estimated: Jul 11–12, 2026</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sec-reorder" style="display:none;">
+      <div class="db-stat">
+        <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;"><i class="fa-solid fa-rotate-right" style="color:var(--pn-blue);margin-right:8px;"></i>Reorder Previous Jobs</div>
+        <div style="font-size:13.5px;color:var(--text-muted);margin-bottom:20px;">Click "Reorder" on any past job to instantly place the same order without re-uploading files or reconfiguring specs.</div>
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+            <div style="background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;">
+              <div style="height:140px;overflow:hidden;">
+                <img src="images/prod_banner_outdoor.png" alt="Outdoor Flex Banner" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div style="padding:16px;">
+                <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">PN-2405 – Outdoor Flex Banner</div>
+                <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:10px;">8 sq.ft · UV Inks · Express Delivery</div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div style="font-size:17px;font-weight:800;color:var(--pn-blue);">₹4,792</div>
+                  <button onclick="showToast('PN-2405 Reorder placed! Check My Print Jobs.','success')" class="btn-pn btn-pn-primary" style="font-size:12px;padding:6px 14px;"><i class="fa-solid fa-rotate-right"></i> Reorder</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div style="background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;">
+              <div style="height:140px;overflow:hidden;">
+                <img src="images/prod_flyer_a5.png" alt="A5 Flyers" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div style="padding:16px;">
+                <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">PN-2404 – A5 Flyers (Gloss)</div>
+                <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:10px;">2000 pcs · 130gsm Gloss · Standard</div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div style="font-size:17px;font-weight:800;color:var(--pn-blue);">₹3,299</div>
+                  <button onclick="showToast('PN-2404 Reorder placed! Check My Print Jobs.','success')" class="btn-pn btn-pn-primary" style="font-size:12px;padding:6px 14px;"><i class="fa-solid fa-rotate-right"></i> Reorder</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div style="background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;">
+              <div style="height:140px;overflow:hidden;">
+                <img src="images/prod_label_product.png" alt="Packaging Labels" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div style="padding:16px;">
+                <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">PN-2403 – Packaging Labels</div>
+                <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:10px;">5 rolls · Gloss vinyl · Standard</div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div style="font-size:17px;font-weight:800;color:var(--pn-blue);">₹1,745</div>
+                  <button onclick="showToast('PN-2403 Reorder placed! Check My Print Jobs.','success')" class="btn-pn btn-pn-primary" style="font-size:12px;padding:6px 14px;"><i class="fa-solid fa-rotate-right"></i> Reorder</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION: INVOICES ═══ -->
+    <div id="sec-invoices" style="display:none;">
+      <div class="db-stat">
+        <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:20px;"><i class="fa-solid fa-file-invoice-dollar" style="color:var(--pn-blue);margin-right:8px;"></i>My Invoices</div>
+        <div class="table-responsive">
+          <table style="width:100%;border-collapse:collapse;" aria-label="Invoices">
+            <thead><tr style="background:var(--bg-surface-2);border-bottom:1px solid var(--border-color);"><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);text-align:left;">Invoice #</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Order</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Date</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Amount</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">GST</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Total</th><th style="padding:12px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);">Download</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">INV-0012</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">PN-2407</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">Jul 9, 2026</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹2,965</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹534</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹3,499</td><td style="padding:12px 14px;"><button onclick="showToast('INV-0012 downloaded!','success')" class="btn-pn btn-pn-primary" style="font-size:11px;padding:5px 12px;"><i class="fa-solid fa-download"></i> PDF</button></td></tr>
+              <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">INV-0011</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">PN-2406</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">Jul 7, 2026</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹5,076</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹914</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹5,990</td><td style="padding:12px 14px;"><button onclick="showToast('INV-0011 downloaded!','success')" class="btn-pn btn-pn-primary" style="font-size:11px;padding:5px 12px;"><i class="fa-solid fa-download"></i> PDF</button></td></tr>
+              <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">INV-0010</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">PN-2405</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">Jul 4, 2026</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹4,062</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹730</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹4,792</td><td style="padding:12px 14px;"><button onclick="showToast('INV-0010 downloaded!','success')" class="btn-pn btn-pn-primary" style="font-size:11px;padding:5px 12px;"><i class="fa-solid fa-download"></i> PDF</button></td></tr>
+              <tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">INV-0009</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">PN-2404</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">Jun 28, 2026</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹2,796</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹503</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹3,299</td><td style="padding:12px 14px;"><button onclick="showToast('INV-0009 downloaded!','success')" class="btn-pn btn-pn-primary" style="font-size:11px;padding:5px 12px;"><i class="fa-solid fa-download"></i> PDF</button></td></tr>
+              <tr><td style="padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-primary);">INV-0008</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">PN-2403</td><td style="padding:12px 14px;font-size:13px;color:var(--text-secondary);">Jun 20, 2026</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹1,479</td><td style="padding:12px 14px;font-size:13px;color:var(--text-primary);">₹266</td><td style="padding:12px 14px;font-size:13px;font-weight:700;color:var(--text-primary);">₹1,745</td><td style="padding:12px 14px;"><button onclick="showToast('INV-0008 downloaded!','success')" class="btn-pn btn-pn-primary" style="font-size:11px;padding:5px 12px;"><i class="fa-solid fa-download"></i> PDF</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION: SAVED DESIGNS ═══ -->
+    <div id="sec-designs" style="display:none;">
+      <div class="db-stat">
+        <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:20px;"><i class="fa-solid fa-images" style="color:var(--pn-cyan);margin-right:8px;"></i>Saved Designs</div>
+        <div class="row g-3">
+          <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0"><div style="background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;"><div style="height:120px;overflow:hidden;"><img src="images/prod_card_matte.png" alt="Corporate Business Card" style="width:100%;height:100%;object-fit:cover;"></div><div style="padding:14px;"><div style="font-size:13px;font-weight:700;color:var(--text-primary);">Corporate Business Card</div><div style="font-size:12px;color:var(--text-muted);">Last used: Jul 7, 2026</div><div class="d-flex gap-2 mt-2"><button onclick="showSection('upload',document.getElementById('nav-upload'))" class="btn-pn btn-pn-primary" style="font-size:11px;padding:5px 12px;flex:1;justify-content:center;">Use Design</button><button onclick="showToast('Design deleted','info')" class="btn-pn btn-pn-outline" style="font-size:11px;padding:5px 10px;"><i class="fa-solid fa-trash"></i></button></div></div></div></div>
+          <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100"><div style="background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;"><div style="height:120px;overflow:hidden;"><img src="images/prod_banner_outdoor.png" alt="Annual Sale Banner" style="width:100%;height:100%;object-fit:cover;"></div><div style="padding:14px;"><div style="font-size:13px;font-weight:700;color:var(--text-primary);">Annual Sale Banner</div><div style="font-size:12px;color:var(--text-muted);">Last used: Jul 4, 2026</div><div class="d-flex gap-2 mt-2"><button onclick="showSection('upload',document.getElementById('nav-upload'))" class="btn-pn btn-pn-primary" style="font-size:11px;padding:5px 12px;flex:1;justify-content:center;">Use Design</button><button onclick="showToast('Design deleted','info')" class="btn-pn btn-pn-outline" style="font-size:11px;padding:5px 10px;"><i class="fa-solid fa-trash"></i></button></div></div></div></div>
+          <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200"><div style="background:var(--bg-surface-2);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;"><div style="height:120px;overflow:hidden;"><img src="images/prod_brochure_trifold.png" alt="Company Profile Brochure" style="width:100%;height:100%;object-fit:cover;"></div><div style="padding:14px;"><div style="font-size:13px;font-weight:700;color:var(--text-primary);">Company Profile Brochure</div><div style="font-size:12px;color:var(--text-muted);">Last used: Jun 28, 2026</div><div class="d-flex gap-2 mt-2"><button onclick="showSection('upload',document.getElementById('nav-upload'))" class="btn-pn btn-pn-primary" style="font-size:11px;padding:5px 12px;flex:1;justify-content:center;">Use Design</button><button onclick="showToast('Design deleted','info')" class="btn-pn btn-pn-outline" style="font-size:11px;padding:5px 10px;"><i class="fa-solid fa-trash"></i></button></div></div></div></div>
+          <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300"><div style="background:var(--bg-surface-2);border:1.5px dashed var(--border-color);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;min-height:180px;cursor:pointer;" onclick="window.location.href='products.html'"><i class="fa-solid fa-plus" style="font-size:28px;color:var(--text-muted);"></i><div style="font-size:13px;font-weight:600;color:var(--text-muted);">Add New Design</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION: PROFILE SETTINGS ═══ -->
+    <div id="sec-profile" style="display:none;">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="db-stat text-center">
+            <div style="width:80px;height:80px;border-radius:50%;background:var(--pn-blue);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#fff;margin:0 auto 14px;">RK</div>
+            <div style="font-size:17px;font-weight:800;color:var(--text-primary);">Rajesh Kumar</div>
+            <div style="font-size:13px;color:var(--text-muted);">rajesh@techstart.com</div>
+            <div style="margin-top:12px;"><span style="background:var(--pn-blue-light);color:var(--pn-blue);font-size:12px;font-weight:600;padding:4px 14px;border-radius:20px;">Standard Account</span></div>
+            <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border-color);">
+              <div class="d-flex justify-content-between mb-2"><span style="font-size:13px;color:var(--text-muted);">Member since</span><span style="font-size:13px;font-weight:600;color:var(--text-primary);">Jan 2025</span></div>
+              <div class="d-flex justify-content-between mb-2"><span style="font-size:13px;color:var(--text-muted);">Total Orders</span><span style="font-size:13px;font-weight:600;color:var(--text-primary);">12</span></div>
+              <div class="d-flex justify-content-between"><span style="font-size:13px;color:var(--text-muted);">Total Spent</span><span style="font-size:13px;font-weight:600;color:var(--text-primary);">₹14,200</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="db-stat">
+            <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:20px;">Edit Profile</div>
+            <form onsubmit="event.preventDefault();showToast('Profile updated successfully!','success');">
+              <div class="row g-3">
+                <div class="col-sm-6"><label class="pn-form-label">First Name</label><input type="text" class="spec-select" value="Rajesh" /></div>
+                <div class="col-sm-6"><label class="pn-form-label">Last Name</label><input type="text" class="spec-select" value="Kumar" /></div>
+                <div class="col-12"><label class="pn-form-label">Email Address</label><input type="email" class="spec-select" value="rajesh@techstart.com" /></div>
+                <div class="col-sm-6"><label class="pn-form-label">Phone</label><input type="tel" class="spec-select" value="+91 98765 43210" /></div>
+                <div class="col-sm-6"><label class="pn-form-label">Company</label><input type="text" class="spec-select" value="TechStart Pvt Ltd" /></div>
+                <div class="col-12"><label class="pn-form-label">Delivery Address</label><textarea class="spec-select" rows="2" style="resize:none;">14, MG Road, Adyar, Chennai – 600020</textarea></div>
+                <div class="col-12"><label class="pn-form-label">GST Number</label><input type="text" class="spec-select" placeholder="Optional" /></div>
+                <div class="col-12"><button type="submit" class="btn-pn btn-pn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Bootstrap + AOS + JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="js/main.js"></script>
+<script>
+// ── Section Navigation ──
+const sections = ['overview','upload','jobs','track','reorder','invoices','designs','profile'];
+
+function showSection(id, navEl) {
+  sections.forEach(s => {
+    document.getElementById('sec-' + s).style.display = 'none';
+  });
+  document.getElementById('sec-' + id).style.display = 'block';
+  document.querySelectorAll('.db-nav .nav-link').forEach(l => l.classList.remove('active'));
+  const sidebarNavEl = navEl && navEl.matches && navEl.matches('.db-nav .nav-link') ? navEl : null;
+  if (sidebarNavEl) sidebarNavEl.classList.add('active');
+  const titles = {
+    overview: ['Dashboard', 'Welcome back, Rajesh 👋'],
+    upload:   ['Upload Artwork', 'Upload your print-ready file and configure specs'],
+    jobs:     ['My Print Jobs', 'View and manage all your print jobs'],
+    track:    ['Track Orders', 'Real-time status of your orders'],
+    reorder:  ['Reorder Jobs', 'Reorder previous jobs with one click'],
+    invoices: ['Invoices', 'Download GST invoices for all orders'],
+    designs:  ['Saved Designs', 'Manage your saved artwork files'],
+    profile:  ['Profile Settings', 'Manage your account details'],
+  };
+  const t = titles[id] || ['Dashboard', ''];
+  document.getElementById('db-page-heading').textContent = t[0];
+  document.getElementById('db-page-sub').textContent = t[1];
+  closeSidebar();
+}
+
+// Default section
+document.getElementById('nav-dashboard').addEventListener('click', function(e){ e.preventDefault(); showSection('overview', this); });
+
+// ── Sidebar toggle ──
+function toggleSidebar() {
+  document.getElementById('db-sidebar').classList.toggle('open');
+  document.getElementById('db-overlay').classList.toggle('show');
+}
+function closeSidebar() {
+  document.getElementById('db-sidebar').classList.remove('open');
+  document.getElementById('db-overlay').classList.remove('show');
+}
+
+// ── File Upload ──
+function handleFileSelect(input) {
+  const f = input.files[0];
+  if (!f) return;
+  document.getElementById('fileName').textContent = f.name;
+  document.getElementById('fileSize').textContent = (f.size / 1024 / 1024).toFixed(2) + ' MB';
+  document.getElementById('filePreview').style.display = 'flex';
+  showToast('File "' + f.name + '" selected successfully!', 'success');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('dropZone').classList.remove('drag-over');
+  const f = e.dataTransfer.files[0];
+  if (f) {
+    document.getElementById('fileName').textContent = f.name;
+    document.getElementById('fileSize').textContent = (f.size / 1024 / 1024).toFixed(2) + ' MB';
+    document.getElementById('filePreview').style.display = 'flex';
+    showToast('File dropped: "' + f.name + '"', 'success');
+  }
+}
+
+function submitOrder(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('[type="submit"]');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing…';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fa-solid fa-cart-plus"></i> Place Order';
+    btn.disabled = false;
+    showToast('Order placed successfully! Check My Print Jobs.', 'success');
+    showSection('jobs', document.getElementById('nav-jobs'));
+  }, 2000);
+}
+
+// ── Track Order Logic ──
+const trackingData = {
+  'PN-2407': {
+    title: 'Corporate Brochure',
+    specs: '500 pcs · Tri-fold · Matte Lamination',
+    steps: [
+      { title: 'Order Confirmed & Payment Received', desc: 'Your order has been confirmed and payment processed.', time: 'Jul 9, 2026 · 10:30 AM', status: 'done', icon: 'fa-check' },
+      { title: 'Artwork Preflight Check Passed', desc: 'Your file has been checked and approved for print.', time: 'Jul 9, 2026 · 2:15 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Printing in Progress — 65%', desc: 'Your job is on press. Estimated completion: 6 hours.', time: 'Jul 10, 2026 · In Progress', status: 'active', icon: 'fa-print', progress: 65 },
+      { title: 'Finishing & Quality Check', desc: 'Lamination and cutting — pending after print completion.', time: 'Estimated: Jul 10 Evening', status: 'wait', icon: 'fa-box' },
+      { title: 'Dispatched for Delivery', desc: 'Package will be handed to courier after QC.', time: 'Estimated: Jul 11, 2026', status: 'wait', icon: 'fa-truck' },
+      { title: 'Delivered', desc: 'Delivery to registered address.', time: 'Estimated: Jul 11–12, 2026', status: 'wait', icon: 'fa-home' }
+    ]
+  },
+  'PN-2406': {
+    title: 'Business Cards (Spot UV)',
+    specs: '1000 pcs · 350gsm · Spot UV',
+    steps: [
+      { title: 'Order Confirmed & Payment Received', desc: 'Your order has been confirmed and payment processed.', time: 'Jul 7, 2026 · 11:15 AM', status: 'done', icon: 'fa-check' },
+      { title: 'Artwork Preflight Check Passed', desc: 'Your file has been checked and approved for print.', time: 'Jul 7, 2026 · 4:00 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Printing & Finishing Completed', desc: 'Print run, lamination, and spot UV coating completed.', time: 'Jul 8, 2026 · 2:30 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Dispatched for Delivery', desc: 'Shipped via Express Courier. Tracking ID: IN-28491038.', time: 'Jul 9, 2026 · 10:00 AM', status: 'active', icon: 'fa-truck' },
+      { title: 'Out for Delivery', desc: 'Expected to reach destination address today.', time: 'Jul 10, 2026 · In Transit', status: 'wait', icon: 'fa-road' },
+      { title: 'Delivered', desc: 'Delivery to registered address.', time: 'Estimated: Jul 10, 2026', status: 'wait', icon: 'fa-home' }
+    ]
+  },
+  'PN-2405': {
+    title: 'Outdoor Flex Banner',
+    specs: '8 sq.ft · 440gsm · UV Ink',
+    steps: [
+      { title: 'Order Confirmed & Payment Received', desc: 'Your order has been confirmed and payment processed.', time: 'Jul 4, 2026 · 9:00 AM', status: 'done', icon: 'fa-check' },
+      { title: 'Artwork Preflight Check Passed', desc: 'Your file has been checked and approved.', time: 'Jul 4, 2026 · 1:30 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Printing & Grommets Completed', desc: 'Banner print and edge reinforcements completed.', time: 'Jul 5, 2026 · 11:00 AM', status: 'done', icon: 'fa-check' },
+      { title: 'Dispatched for Delivery', desc: 'Shipped via Standard Courier.', time: 'Jul 5, 2026 · 4:00 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Delivered', desc: 'Delivered and signed by R. Kumar.', time: 'Jul 7, 2026 · 3:45 PM', status: 'done', icon: 'fa-check' }
+    ]
+  },
+  'PN-2404': {
+    title: 'A5 Flyers (Gloss)',
+    specs: '2000 pcs · 130gsm · Gloss',
+    steps: [
+      { title: 'Order Confirmed & Payment Received', desc: 'Your order has been confirmed.', time: 'Jun 28, 2026 · 2:00 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Artwork Approved', desc: 'Flyer design approved for print.', time: 'Jun 28, 2026 · 5:30 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Printing & Cutting Completed', desc: 'Offset printing and trimming completed.', time: 'Jun 30, 2026 · 12:00 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Dispatched for Delivery', desc: 'Shipped via standard ground shipping.', time: 'Jul 1, 2026 · 9:00 AM', status: 'done', icon: 'fa-check' },
+      { title: 'Delivered', desc: 'Delivered and signed by Guard.', time: 'Jul 3, 2026 · 11:30 AM', status: 'done', icon: 'fa-check' }
+    ]
+  },
+  'PN-2403': {
+    title: 'Packaging Labels',
+    specs: '5 rolls · Gloss vinyl',
+    steps: [
+      { title: 'Order Confirmed', desc: 'Order confirmed and paid.', time: 'Jun 20, 2026 · 10:00 AM', status: 'done', icon: 'fa-check' },
+      { title: 'Artwork Approved', desc: 'Label sheet artwork approved.', time: 'Jun 20, 2026 · 3:15 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Printing & Die Cutting', desc: 'Roll printer run and kiss-cutting completed.', time: 'Jun 22, 2026 · 4:00 PM', status: 'done', icon: 'fa-check' },
+      { title: 'Dispatched', desc: 'Shipped to Adyar, Chennai.', time: 'Jun 23, 2026 · 11:00 AM', status: 'done', icon: 'fa-check' },
+      { title: 'Delivered', desc: 'Delivered to reception desk.', time: 'Jun 25, 2026 · 2:30 PM', status: 'done', icon: 'fa-check' }
+    ]
+  }
+};
+
+function trackOrder(orderId) {
+  const data = trackingData[orderId];
+  if (!data) {
+    showToast('Order ID not found! Enter a valid ID (PN-2403 to PN-2407)', 'error');
+    return;
+  }
+
+  document.querySelectorAll('.track-list-item').forEach(item => {
+    item.style.border = '1px solid var(--border-color)';
+    const text = item.textContent || '';
+    if (text.includes(orderId)) {
+      item.style.border = '1.5px solid var(--pn-blue)';
+    }
+  });
+
+  document.getElementById('trackInput').value = orderId;
+  document.getElementById('trackOrderTitle').textContent = `Order #${orderId} Status`;
+  document.getElementById('trackOrderSpecs').textContent = `${data.title} · ${data.specs}`;
+
+  const timelineContainer = document.getElementById('trackTimeline');
+  timelineContainer.innerHTML = '';
+
+  data.steps.forEach(step => {
+    let iconClass = 'tl-wait';
+    if (step.status === 'done') iconClass = 'tl-done';
+    else if (step.status === 'active') iconClass = 'tl-active';
+
+    const stepDiv = document.createElement('div');
+    stepDiv.className = 'db-tl-step';
+
+    let progressHtml = '';
+    if (step.progress) {
+      progressHtml = `<div style="height:4px;background:var(--border-color);border-radius:2px;margin-top:8px;overflow:hidden;max-width:240px;"><div style="height:100%;width:${step.progress}%;background:var(--pn-blue);border-radius:2px;"></div></div>`;
+    }
+
+    stepDiv.innerHTML = `
+      <div class="db-tl-icon ${iconClass}"><i class="fa-solid ${step.icon}"></i></div>
+      <div>
+        <div class="db-tl-title">${step.title}</div>
+        <div class="db-tl-desc">${step.desc}</div>
+        ${progressHtml}
+        <div class="db-tl-time">${step.time}</div>
+      </div>
+    `;
+    timelineContainer.appendChild(stepDiv);
+  });
+}
+
+function openLogoutModal() {
+  document.getElementById('logoutModal').style.display = 'flex';
+}
+function closeLogoutModal() {
+  document.getElementById('logoutModal').style.display = 'none';
+}
+
+// AOS re-init on section change
+AOS.init({ duration:600, easing:'ease-out-cubic', once:true });
+</script>
+
+<!-- Custom Modal: Logout Confirmation -->
+<div id="logoutModal" class="pn-modal-overlay" style="display: none;" onclick="if(event.target===this) closeLogoutModal()">
+  <div class="pn-modal-card" data-aos="zoom-in" data-aos-duration="300">
+    <div class="pn-modal-header">
+      <h5><i class="fa-solid fa-right-from-bracket" style="color: var(--pn-orange); margin-right: 8px;"></i>Confirm Logout</h5>
+      <button class="pn-modal-close" onclick="closeLogoutModal()">&times;</button>
+    </div>
+    <div class="pn-modal-body">
+      <p style="margin:0;">Are you sure you want to log out of PrintNova Studio?</p>
+    </div>
+    <div class="pn-modal-footer">
+      <button class="btn-pn btn-pn-outline" onclick="closeLogoutModal()">Cancel</button>
+      <a href="login.html" class="btn-pn btn-pn-primary"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1800 @@
+/* ================================================================
+   PrintNova Studio – Dashboard Specific CSS
+   ================================================================ */
+
+/* ── Sidebar ────────────────────────────────────────────── */
+:root {
+  --db-sidebar-w: 260px;
+  --db-header-h: 68px;
+}
+
+#db-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--db-sidebar-w);
+  height: 100vh;
+  background: var(--pn-charcoal);
+  display: flex;
+  flex-direction: column;
+  z-index: 1040;
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+
+[data-theme="dark"] #db-sidebar {
+  background: #0F172A;
+}
+
+[dir="rtl"] #db-sidebar {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+
+[dir="rtl"] #db-sidebar.open {
+  transform: translateX(0);
+}
+
+.db-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  height: var(--db-header-h);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.db-brand-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  color: var(--pn-blue);
+  flex-shrink: 0;
+  box-shadow: none;
+}
+
+.db-brand-text .db-brand-name {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.db-brand-text .db-brand-tag {
+  font-size: 10px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .05em;
+}
+
+.db-nav-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 0;
+}
+
+.db-nav-wrap::-webkit-scrollbar { width: 3px; }
+.db-nav-wrap::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 2px; }
+
+.db-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  padding: 14px 20px 6px;
+}
+
+.db-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  color: rgba(255,255,255,.55);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: all .2s;
+  text-decoration: none;
+  border-radius: 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.db-nav .nav-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,.07);
+}
+
+.db-nav .nav-link.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+}
+
+.db-nav .nav-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: #FFFFFF; /* High contrast indicator */
+  border-radius: 0 3px 3px 0;
+}
+
+[dir="rtl"] .db-nav .nav-link.active::before {
+  left: auto;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.db-nav-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.db-nav-badge {
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+
+.db-sidebar-footer {
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  flex-shrink: 0;
+}
+
+.db-user-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.db-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--pn-blue);
+  flex-shrink: 0;
+}
+
+.db-user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.db-user-plan {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+}
+
+/* ── Main wrapper ──────────────────────────────────────── */
+#db-wrapper {
+  margin-left: var(--db-sidebar-w);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left .3s cubic-bezier(.4,0,.2,1);
+  background: var(--bg-body);
+  padding-top: var(--db-header-h);
+}
+
+[dir="rtl"] #db-wrapper {
+  margin-left: 0;
+  margin-right: var(--db-sidebar-w);
+}
+
+/* ── Dashboard Header ──────────────────────────────────── */
+#db-header {
+  position: fixed;
+  top: 0;
+  left: var(--db-sidebar-w);
+  right: 0;
+  z-index: 1030;
+  height: var(--db-header-h);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  transition: left .3s cubic-bezier(.4,0,.2,1), right .3s cubic-bezier(.4,0,.2,1);
+}
+
+[dir="rtl"] #db-header {
+  left: 0;
+  right: var(--db-sidebar-w);
+}
+
+[data-theme="dark"] #db-header {
+  background: rgba(17,24,39,.92);
+}
+
+.db-header-brand {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex: 1;
+}
+
+.db-header-brand .brand-logo-sm {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: var(--pn-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+.db-header-brand .brand-name-sm {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.db-page-title {
+  flex: 1;
+}
+
+.db-page-title h5 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.db-page-title p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.db-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.db-icon-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  position: relative;
+}
+
+.db-icon-btn:hover {
+  background: var(--pn-blue-light);
+  color: var(--pn-blue);
+  border-color: var(--pn-blue);
+}
+
+.db-notif-dot {
+  position: absolute;
+  top: 7px; right: 7px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #EF4444;
+  border: 2px solid var(--bg-surface);
+}
+
+.db-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px 5px 5px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: 40px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.db-profile-btn:hover {
+  border-color: var(--pn-blue);
+  background: var(--pn-blue-light);
+}
+
+.db-profile-btn.dropdown-toggle::after {
+  margin-left: 4px;
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.db-profile-menu {
+  min-width: 220px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  background: var(--bg-surface);
+}
+
+.db-profile-menu .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.db-profile-menu .dropdown-item i {
+  width: 18px;
+  text-align: center;
+  color: var(--pn-blue);
+}
+
+.db-profile-menu .dropdown-item:hover,
+.db-profile-menu .dropdown-item:focus {
+  background: var(--pn-blue-light);
+  color: var(--pn-blue);
+}
+
+.db-profile-menu .dropdown-item.text-danger,
+.db-profile-menu .dropdown-item.text-danger i {
+  color: var(--pn-blue) !important;
+}
+
+.db-profile-menu .dropdown-divider {
+  border-color: var(--border-color);
+  margin: 6px 0;
+}
+
+.db-profile-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--pn-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.db-profile-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.db-profile-role {
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+
+#db-toggle {
+  display: none;
+  width: 38px; height: 38px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+#db-toggle:hover { background: var(--pn-blue-light); color: var(--pn-blue); }
+
+/* ── Dashboard Content ─────────────────────────────────── */
+#db-content {
+  flex: 1;
+  padding: 28px;
+}
+
+/* ── Welcome Card ─────────────────────────────────────── */
+.db-welcome {
+  background: var(--pn-blue);
+  border-radius: var(--radius-xl);
+  padding: 32px 36px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(37,99,235,.2);
+  margin-bottom: 24px;
+}
+
+.db-welcome::before {
+  content: '';
+  position: absolute;
+  top: -70px; right: -70px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.07);
+}
+
+.db-welcome::after {
+  content: '';
+  position: absolute;
+  bottom: -50px; right: 100px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+
+.db-welcome-greeting { font-size: 13px; opacity: .8; margin-bottom: 4px; }
+.db-welcome-name { font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
+.db-welcome-msg { font-size: 13.5px; opacity: .75; max-width: 420px; }
+
+.db-welcome-meta {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.2);
+}
+
+.db-meta-value { font-size: 22px; font-weight: 800; }
+.db-meta-label { font-size: 11px; opacity: .65; letter-spacing: .04em; text-transform: uppercase; }
+
+/* ── Stat Cards ──────────────────────────────────────── */
+.db-stat {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.db-stat:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+.db-stat-icon {
+  width: 46px; height: 46px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 16px rgba(63, 111, 143, 0.30) !important;
+}
+
+.db-stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.db-stat-label {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.db-stat-trend {
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.db-stat-bg-icon {
+  position: absolute;
+  right: 14px; top: 14px;
+  font-size: 52px;
+  opacity: .04;
+}
+
+/* ── Upload Zone ──────────────────────────────────────── */
+.db-upload-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--bg-body);
+}
+
+.db-upload-zone:hover,
+.db-upload-zone.drag-over {
+  border-color: var(--pn-blue);
+  background: var(--pn-blue-light);
+}
+
+.db-upload-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--pn-blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 26px;
+  color: var(--pn-blue);
+  transition: var(--transition);
+}
+
+.db-upload-zone:hover .db-upload-icon {
+  background: var(--pn-blue);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* ── Progress Timeline ────────────────────────────────── */
+.db-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.db-tl-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding-bottom: 22px;
+  position: relative;
+}
+
+.db-tl-step:last-child { padding-bottom: 0; }
+
+.db-tl-step::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 30px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.db-tl-step:last-child::before { display: none; }
+
+[dir="rtl"] .db-tl-step::before {
+  left: auto;
+  right: 15px;
+}
+
+.db-tl-icon {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.tl-done   { background: #10B981; color: #fff; }
+.tl-active { background: var(--pn-blue); color: #fff; box-shadow: 0 0 0 4px rgba(27,79,232,.2); }
+.tl-wait   { background: var(--bg-surface-2); color: var(--text-muted); border: 1.5px solid var(--border-color); }
+
+.db-tl-title { font-size: 13.5px; font-weight: 600; color: var(--text-primary); }
+.db-tl-desc  { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.db-tl-time  { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+/* ── Print Spec Form ────────────────────────────────── */
+.spec-select {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-family: var(--font-base);
+  width: 100%;
+  outline: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.spec-select:focus {
+  border-color: var(--pn-blue);
+  box-shadow: 0 0 0 3px rgba(27,79,232,.12);
+}
+
+[data-theme="dark"] .spec-select {
+  background: var(--bg-surface-2);
+}
+
+/* ── Dashboard sidebar overlay (mobile) ─────────────── */
+#db-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,.5);
+  z-index: 1039;
+  backdrop-filter: blur(2px);
+}
+
+#db-overlay.show { display: block; }
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 991.98px) {
+  #db-sidebar {
+    transform: translateX(-100%);
+  }
+
+  #db-sidebar.open {
+    transform: translateX(0);
+  }
+
+  #db-wrapper {
+    margin-left: 0;
+  }
+
+  [dir="rtl"] #db-wrapper {
+    margin-right: 0;
+  }
+
+  #db-header {
+    left: 0 !important;
+  }
+
+  [dir="rtl"] #db-header {
+    right: 0 !important;
+  }
+
+  #db-toggle { display: flex; }
+  .db-page-title { display: none; }
+  .db-header-brand { display: flex; }
+  #db-content { padding: 18px; }
+}
+
+@media (max-width: 575.98px) {
+  #db-content { padding: 14px 12px; }
+  .db-welcome { padding: 22px 20px; }
+  .db-welcome-name { font-size: 20px; }
+  .db-welcome-meta { gap: 16px; }
+  .db-header-actions .db-profile-btn .db-profile-name,
+  .db-header-actions .db-profile-btn .db-profile-role { display: none; }
+}
+
+/* ================================================================
+   PROFESSIONAL MILD DASHBOARD COLOR REFRESH
+   ================================================================ */
+#db-sidebar,
+.db-welcome {
+  background: var(--pn-blue-dark);
+}
+
+.db-brand-logo,
+.db-user-avatar {
+  color: var(--pn-blue);
+}
+
+.db-nav .nav-link.active,
+.db-nav-badge {
+  background: rgba(255,255,255,.14);
+}
+
+.db-notif-dot,
+.tl-done,
+.tl-active {
+  background: var(--pn-blue);
+}
+
+.tl-active {
+  box-shadow: 0 0 0 4px rgba(63, 95, 115, .18);
+}
+
+.db-welcome,
+.db-stat:hover {
+  box-shadow: 0 8px 28px rgba(47, 72, 88, .16);
+}
+
+.db-welcome {
+  background: var(--banner-bg, var(--pn-blue-dark));
+}
+
+.db-brand-logo,
+.db-user-avatar,
+.db-header-brand .brand-logo-sm,
+.db-profile-avatar,
+.db-upload-zone:hover .db-upload-icon {
+  background: #FFFFFF;
+  color: var(--pn-blue);
+}
+
+.db-header-brand .brand-logo-sm,
+.db-profile-avatar,
+.db-upload-zone:hover .db-upload-icon {
+  background: var(--pn-blue);
+  color: #FFFFFF;
+}
+
+.db-stat-icon,
+.db-upload-icon,
+.tl-wait {
+  background: var(--pn-blue-light);
+  color: var(--pn-blue);
+  border-color: rgba(63, 95, 115, .16);
+}
+
+.db-notif-dot,
+.tl-done,
+.tl-active {
+  background: var(--pn-blue);
+}
+
+.db-nav-badge {
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, .20);
+}
+
+.spec-select:focus {
+  box-shadow: 0 0 0 3px rgba(63, 95, 115, .14);
+}
+
+.db-welcome,
+.db-stat:hover {
+  box-shadow: 0 8px 24px rgba(47, 72, 88, .18);
+}
+
+/* ================================================================
+   TWO COLOUR DASHBOARD THEME
+   Palette: Mild blue + white only. Transparent tints use the same colours.
+   ================================================================ */
+:root {
+  --pn-ink: #3F6F8F;
+  --pn-paper: #FFFFFF;
+
+  --pn-blue: var(--pn-ink);
+  --pn-blue-dark: var(--pn-ink);
+  --pn-blue-light: rgba(63, 111, 143, .08);
+  --pn-cyan: var(--pn-ink);
+  --pn-cyan-light: rgba(63, 111, 143, .08);
+  --pn-orange: var(--pn-ink);
+  --pn-orange-light: rgba(63, 111, 143, .08);
+  --pn-yellow: var(--pn-ink);
+  --pn-charcoal: var(--pn-ink);
+
+  --bg-body: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-2: #F1F5F9;
+  --border-color: rgba(63, 111, 143, .18);
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+
+  --banner-bg: var(--pn-ink);
+  --cta-overlay-1: rgba(63, 111, 143, .52);
+  --cta-overlay-2: rgba(63, 111, 143, .66);
+  --db-welcome-bg: linear-gradient(rgba(248, 250, 252, 0.88), rgba(241, 245, 249, 0.94));
+  --db-welcome-text: #334155;
+}
+
+[data-theme="dark"] {
+  --bg-body: #0E1C2B;
+  --bg-surface: #162333;
+  --bg-surface-2: #1D2E40;
+  --border-color: rgba(255, 255, 255, .12);
+  --text-primary: #F0F6FF;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --pn-blue-light: rgba(255, 255, 255, .10);
+  --db-welcome-bg: linear-gradient(rgba(22, 35, 51, 0.80), rgba(22, 35, 51, 0.95));
+  --db-welcome-text: #F0F6FF;
+}
+
+#db-sidebar {
+  background: var(--bg-surface) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+
+.db-welcome {
+  background: var(--db-welcome-bg), url('../images/banners/dashboard.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+#db-wrapper,
+#db-content,
+#db-header,
+.db-stat,
+.spec-select,
+.db-profile-btn,
+.db-icon-btn {
+  background: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+}
+
+.db-brand-logo,
+.db-user-avatar,
+.db-header-brand .brand-logo-sm,
+.db-profile-avatar,
+.db-upload-zone:hover .db-upload-icon,
+.db-notif-dot,
+.btn-pn-primary,
+.btn-pn-orange {
+  background: var(--pn-ink) !important;
+  color: var(--pn-paper) !important;
+  border-color: var(--pn-ink) !important;
+}
+
+.db-stat-icon,
+.db-upload-icon,
+.db-nav-badge,
+.badge-pn,
+.badge-success,
+.badge-warning,
+.badge-info,
+.badge-danger,
+.badge-orange {
+  background: rgba(63, 111, 143, .08) !important;
+  color: var(--pn-ink) !important;
+  border-color: rgba(63, 111, 143, .18) !important;
+}
+
+.db-nav .nav-link {
+  color: var(--text-secondary) !important;
+}
+
+.db-nav .nav-link i {
+  color: var(--pn-ink) !important;
+}
+
+.db-section-label {
+  color: var(--text-muted) !important;
+}
+
+.db-brand-text .db-brand-name,
+.db-user-name {
+  color: var(--text-primary) !important;
+}
+
+.db-brand-text .db-brand-tag,
+.db-user-plan {
+  color: var(--text-muted) !important;
+}
+
+.db-brand {
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.db-sidebar-footer {
+  border-top: 1px solid var(--border-color) !important;
+}
+
+.db-welcome,
+.db-welcome * {
+  color: var(--db-welcome-text) !important;
+}
+
+.db-nav .nav-link:hover {
+  background: var(--bg-surface-2) !important;
+  color: var(--text-primary) !important;
+}
+
+.db-nav .nav-link.active {
+  background: var(--pn-blue-light) !important;
+  color: var(--pn-ink) !important;
+}
+
+.db-nav .nav-link.active::before {
+  background: var(--pn-ink) !important;
+}
+
+.db-nav-badge {
+  background: var(--pn-blue-light) !important;
+  color: var(--pn-ink) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.db-stat:hover,
+.db-profile-btn:hover,
+.db-icon-btn:hover,
+.db-upload-zone:hover,
+.db-upload-zone.drag-over {
+  border-color: var(--pn-ink) !important;
+  box-shadow: 0 10px 24px rgba(63, 111, 143, .12) !important;
+}
+
+.db-overlay,
+#db-overlay {
+  background: rgba(63, 111, 143, .55) !important;
+}
+
+/* Theme-aware dashboard overrides */
+#db-wrapper,
+#db-content {
+  background: var(--bg-body) !important;
+}
+
+#db-header,
+.db-stat,
+.spec-select,
+.db-profile-btn,
+.db-icon-btn {
+  background: var(--bg-surface) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.db-stat {
+  box-shadow: var(--shadow-md) !important;
+}
+
+.db-stat:hover,
+.db-profile-btn:hover,
+.db-icon-btn:hover,
+.db-upload-zone:hover,
+.db-upload-zone.drag-over {
+  background: var(--bg-surface-2) !important;
+  border-color: var(--pn-ink) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.db-stat-icon,
+.db-upload-icon,
+.db-nav-badge {
+  background: var(--pn-blue-light) !important;
+  color: var(--pn-ink) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Dark mode specific sidebar adjustment */
+[data-theme="dark"] #db-sidebar {
+  background: var(--bg-surface) !important;
+}
+
+
+.db-welcome,
+.db-welcome * {
+  color: var(--db-welcome-text) !important;
+  text-shadow: none !important;
+}
+
+[data-theme="dark"] .db-welcome,
+[data-theme="dark"] .db-welcome * {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .5) !important;
+}
+
+/* Match the site-wide brand sizing inside dashboard-specific CSS. */
+:root {
+  --brand-logo-size: 40px;
+  --brand-logo-radius: 10px;
+  --brand-name-size: 17px;
+  --brand-tag-size: 10px;
+}
+
+.db-brand,
+.db-header-brand {
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.db-brand-logo,
+.db-header-brand .brand-logo-sm {
+  width: var(--brand-logo-size) !important;
+  height: var(--brand-logo-size) !important;
+  min-width: var(--brand-logo-size) !important;
+  border-radius: var(--brand-logo-radius) !important;
+  font-size: 18px !important;
+}
+
+.db-brand-text .db-brand-name,
+.db-header-brand .brand-name-sm {
+  font-size: var(--brand-name-size) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -.02em !important;
+  white-space: nowrap !important;
+}
+
+.db-brand-text .db-brand-tag {
+  font-size: var(--brand-tag-size) !important;
+  font-weight: 600 !important;
+  line-height: 1.15 !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 575.98px) {
+  :root {
+    --brand-logo-size: 38px;
+    --brand-name-size: 16px;
+    --brand-tag-size: 9px;
+  }
+}
+
+/* ── Dark Mode Visibility & Contrast Adjustments ── */
+[data-theme="dark"] .db-stat-icon,
+[data-theme="dark"] .db-upload-icon,
+[data-theme="dark"] .tl-wait,
+[data-theme="dark"] .db-nav-badge,
+[data-theme="dark"] .badge-pn,
+[data-theme="dark"] .badge-success,
+[data-theme="dark"] .badge-warning,
+[data-theme="dark"] .badge-info,
+[data-theme="dark"] .badge-danger,
+[data-theme="dark"] .badge-orange {
+  background: rgba(255, 255, 255, .10) !important;
+  color: #7EC8E3 !important;
+  border-color: rgba(255, 255, 255, .15) !important;
+}
+
+[data-theme="dark"] .db-stat-icon,
+[data-theme="dark"] .db-upload-icon {
+  box-shadow: 0 6px 16px rgba(126, 200, 227, 0.30) !important;
+}
+
+/* Final dashboard hover icon visibility fix. */
+.db-icon-btn:hover i,
+.db-profile-btn:hover i,
+.db-nav-link:hover i,
+.db-upload-zone:hover .db-upload-icon,
+.db-upload-zone:hover .db-upload-icon i,
+.db-stat-card:hover .db-stat-icon,
+.db-stat-card:hover .db-stat-icon i {
+  color: var(--pn-ink) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.db-upload-zone:hover .db-upload-icon,
+.db-stat-card:hover .db-stat-icon {
+  background: var(--pn-blue-light) !important;
+  border-color: rgba(63, 111, 143, .22) !important;
+}
+
+.btn-pn-primary:hover i,
+.btn-pn-orange:hover i {
+  color: var(--pn-paper) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-theme="dark"] .db-icon-btn:hover i,
+[data-theme="dark"] .db-profile-btn:hover i,
+[data-theme="dark"] .db-nav-link:hover i,
+[data-theme="dark"] .db-upload-zone:hover .db-upload-icon,
+[data-theme="dark"] .db-upload-zone:hover .db-upload-icon i,
+[data-theme="dark"] .db-stat-card:hover .db-stat-icon,
+[data-theme="dark"] .db-stat-card:hover .db-stat-icon i {
+  color: #7EC8E3 !important;
+}
+
+[data-theme="dark"] .db-stat-trend {
+  color: #7EC8E3 !important;
+}
+
+/* ── Table Alignment and Uniform Status/Action Columns ── */
+#db-content table th {
+  text-align: left !important;
+}
+
+.db-status-badge {
+  display: inline-block !important;
+  width: 90px !important;
+  text-align: center !important;
+  padding: 4px 0 !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+
+.table-responsive .btn-pn {
+  display: inline-flex !important;
+  width: 90px !important;
+  justify-content: center !important;
+  padding: 5px 0 !important;
+  font-size: 11px !important;
+}
+
+#db-content table th.col-center,
+#db-content table td.col-center {
+  text-align: center !important;
+}
+
+/* ── Custom Theme Modals ── */
+.pn-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  transition: all 0.3s ease;
+}
+
+.pn-modal-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 90%;
+  max-width: 400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pn-modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pn-modal-header h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.pn-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.pn-modal-close:hover {
+  color: var(--text-primary);
+}
+
+.pn-modal-body {
+  padding: 20px;
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.pn-modal-footer {
+  padding: 14px 20px;
+  background: var(--bg-surface-2);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Absolute final dashboard icon hover contrast guard. */
+.db-icon-btn:hover i,
+.db-profile-btn:hover i,
+.db-nav-link:hover i,
+.db-action-btn:hover i,
+.db-upload-zone:hover i,
+.db-stat-card:hover i,
+.pn-modal-close:hover i {
+  color: var(--pn-paper) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-shadow: none !important;
+}
+
+.btn-pn-primary:hover i,
+.btn-pn-orange:hover i,
+.db-welcome .btn-pn:hover i {
+  color: var(--pn-paper) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-theme="dark"] .db-icon-btn:hover i,
+[data-theme="dark"] .db-profile-btn:hover i,
+[data-theme="dark"] .db-nav-link:hover i,
+[data-theme="dark"] .db-action-btn:hover i,
+[data-theme="dark"] .db-upload-zone:hover i,
+[data-theme="dark"] .db-stat-card:hover i,
+[data-theme="dark"] .pn-modal-close:hover i {
+  color: #7EC8E3 !important;
+}
+
+/* Final dashboard icon box normal/hover color behavior. */
+.db-stat-icon,
+.db-upload-icon,
+.db-tl-icon,
+.db-nav-badge {
+  background: #FFFFFF !important;
+  color: var(--pn-ink) !important;
+  border-color: rgba(63, 111, 143, .24) !important;
+}
+
+.db-stat-icon i,
+.db-upload-icon i,
+.db-tl-icon i,
+.db-nav-badge i {
+  color: var(--pn-ink) !important;
+}
+
+.db-stat-card:hover .db-stat-icon,
+.db-upload-zone:hover .db-upload-icon,
+.db-nav-link:hover .db-nav-badge {
+  background: var(--pn-ink) !important;
+  color: #FFFFFF !important;
+  border-color: var(--pn-ink) !important;
+}
+
+.db-stat-card:hover .db-stat-icon i,
+.db-upload-zone:hover .db-upload-icon i,
+.db-nav-link:hover .db-nav-badge i {
+  color: #FFFFFF !important;
+}
+
+/* Final dashboard welcome banner image visibility fix. */
+.db-welcome {
+  background-image: linear-gradient(rgba(14, 28, 43, .58), rgba(63, 111, 143, .42)),
+                    url('../images/banners/dashboard.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border: 0 !important;
+}
+
+.db-welcome,
+.db-welcome * {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 12px rgba(14, 28, 43, .45) !important;
+}
+
+.db-welcome-meta {
+  border-top-color: rgba(255, 255, 255, .28) !important;
+}
+
+[data-theme="dark"] .db-welcome {
+  background-image: linear-gradient(rgba(14, 28, 43, .72), rgba(14, 28, 43, .58)),
+                    url('../images/banners/dashboard.png') !important;
+}
+
+/* Final dashboard welcome content blur for readability. */
+.db-welcome > .row {
+  position: relative !important;
+  z-index: 2 !important;
+  background: rgba(14, 28, 43, .38) !important;
+  border: 1px solid rgba(255, 255, 255, .20) !important;
+  border-radius: 18px !important;
+  margin: 0 auto !important;
+  padding: 22px !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  min-height: 220px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.db-welcome > .row > [class*="col-"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.db-welcome-msg {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.db-welcome .d-flex.gap-3 {
+  justify-content: center !important;
+}
+
+.db-welcome::before,
+.db-welcome::after {
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.db-welcome .btn-pn-white {
+  background: #FFFFFF !important;
+  color: var(--pn-ink) !important;
+  border-color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+
+.db-welcome .btn-pn-white i {
+  color: var(--pn-ink) !important;
+  text-shadow: none !important;
+}
+
+@media (max-width: 575.98px) {
+  .db-welcome > .row {
+    margin: 0 auto !important;
+    padding: 16px !important;
+    border-radius: 14px !important;
+  }
+}
+
+/* Final dashboard brand alignment with the main website. */
+.db-brand,
+[data-theme="dark"] .db-brand {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(63, 111, 143, .18) !important;
+  border-radius: 14px !important;
+  margin: 12px !important;
+  padding: 10px 12px !important;
+  height: auto !important;
+  min-height: 64px !important;
+  box-shadow: 0 10px 24px rgba(14, 28, 43, .12) !important;
+}
+
+.db-brand-logo,
+.db-header-brand .brand-logo-sm,
+[data-theme="dark"] .db-brand-logo,
+[data-theme="dark"] .db-header-brand .brand-logo-sm {
+  background: #FFFFFF !important;
+  color: var(--pn-ink) !important;
+  border: 1px solid rgba(63, 111, 143, .24) !important;
+  box-shadow: none !important;
+}
+
+.db-brand-logo i,
+.db-header-brand .brand-logo-sm i,
+[data-theme="dark"] .db-brand-logo i,
+[data-theme="dark"] .db-header-brand .brand-logo-sm i {
+  color: var(--pn-ink) !important;
+}
+
+.db-brand-text .db-brand-name,
+.db-brand-text .db-brand-tag,
+.db-header-brand .brand-name-sm,
+.db-header-brand::after,
+[data-theme="dark"] .db-brand-text .db-brand-name,
+[data-theme="dark"] .db-brand-text .db-brand-tag,
+[data-theme="dark"] .db-header-brand .brand-name-sm,
+[data-theme="dark"] .db-header-brand::after {
+  color: var(--pn-ink) !important;
+  opacity: 1 !important;
+}
+
+.db-header-brand,
+[data-theme="dark"] .db-header-brand {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(63, 111, 143, .18) !important;
+  border-radius: 12px !important;
+  padding: 6px 10px !important;
+  box-shadow: 0 8px 18px rgba(14, 28, 43, .08) !important;
+}
+
+.db-header-brand::after {
+  content: "Print Smarter. Brand Better.";
+  display: none;
+  font-size: var(--brand-tag-size, 10px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 991.98px) {
+  .db-header-brand {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .db-header-brand::after {
+    display: none !important;
+  }
+}
+
+/* Final dashboard brand color only: no card/background treatment. */
+.db-brand,
+[data-theme="dark"] .db-brand,
+.db-header-brand,
+[data-theme="dark"] .db-header-brand {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.db-brand {
+  margin: 0 !important;
+  padding: 0 20px !important;
+  height: var(--db-header-h) !important;
+  min-height: var(--db-header-h) !important;
+}
+
+.db-header-brand {
+  padding: 0 !important;
+}
+
+.db-brand-logo,
+.db-header-brand .brand-logo-sm,
+[data-theme="dark"] .db-brand-logo,
+[data-theme="dark"] .db-header-brand .brand-logo-sm {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.db-brand-logo i,
+.db-header-brand .brand-logo-sm i,
+.db-brand-text .db-brand-name,
+.db-header-brand .brand-name-sm {
+  color: var(--pn-ink) !important;
+  opacity: 1 !important;
+}
+
+.db-brand-text .db-brand-tag,
+.db-header-brand::after {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .db-brand-logo i,
+[data-theme="dark"] .db-header-brand .brand-logo-sm i,
+[data-theme="dark"] .db-brand-text .db-brand-name,
+[data-theme="dark"] .db-header-brand .brand-name-sm {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .db-brand-text .db-brand-tag,
+[data-theme="dark"] .db-header-brand::after {
+  color: rgba(255, 255, 255, 0.6) !important;
+  opacity: 1 !important;
+}
+
+/* Final dashboard brand/header height alignment. */
+.db-brand,
+.db-header-brand,
+[data-theme="dark"] .db-brand,
+[data-theme="dark"] .db-header-brand {
+  height: var(--db-header-h) !important;
+  min-height: var(--db-header-h) !important;
+  max-height: var(--db-header-h) !important;
+  align-items: center !important;
+  align-content: center !important;
+}
+
+.db-brand {
+  justify-content: flex-start !important;
+}
+
+.db-header-brand {
+  flex: 0 0 auto !important;
+  justify-content: flex-start !important;
+}
+
+.db-brand-logo,
+.db-header-brand .brand-logo-sm {
+  align-self: center !important;
+}
+
+.db-brand-text {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-height: var(--brand-logo-size, 40px) !important;
+}
+
+@media (max-width: 991.98px) {
+  .db-header-brand {
+    min-width: 0 !important;
+    height: var(--db-header-h) !important;
+    min-height: var(--db-header-h) !important;
+    max-height: var(--db-header-h) !important;
+  }
+}
+
+/* Final dashboard brand/menu separation line. */
+.db-brand,
+[data-theme="dark"] .db-brand {
+  border-bottom: 1px solid rgba(63, 111, 143, .28) !important;
+}
+
+[data-theme="dark"] .db-brand {
+  border-bottom-color: rgba(255, 255, 255, .18) !important;
+}
+
+.db-nav-wrap {
+  padding-top: 14px !important;
+}
+
+.db-header-brand,
+[data-theme="dark"] .db-header-brand {
+  position: relative !important;
+  margin-right: 16px !important;
+  padding-right: 16px !important;
+}
+
+.db-header-brand::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 0;
+  width: 1px;
+  height: calc(var(--db-header-h) - 24px);
+  background: rgba(63, 111, 143, .28);
+}
+
+[data-theme="dark"] .db-header-brand::before {
+  background: rgba(255, 255, 255, .2) !important;
+}
+
+/* Final dark dashboard brand placement/readability fix. */
+[data-theme="dark"] .db-brand {
+  gap: 12px !important;
+  padding: 0 18px !important;
+  background: transparent !important;
+  border-bottom-color: rgba(255, 255, 255, .22) !important;
+}
+
+[data-theme="dark"] .db-brand-logo,
+[data-theme="dark"] .db-header-brand .brand-logo-sm {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, .28) !important;
+  color: var(--pn-ink) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[data-theme="dark"] .db-brand-logo i,
+[data-theme="dark"] .db-header-brand .brand-logo-sm i {
+  color: var(--pn-ink) !important;
+}
+
+[data-theme="dark"] .db-brand-text {
+  min-width: 0 !important;
+  max-width: calc(var(--db-sidebar-w) - 86px) !important;
+  gap: 2px !important;
+}
+
+[data-theme="dark"] .db-brand-text .db-brand-name,
+[data-theme="dark"] .db-header-brand .brand-name-sm {
+  color: #FFFFFF !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+}
+
+[data-theme="dark"] .db-brand-text .db-brand-tag {
+  color: rgba(255, 255, 255, .78) !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  letter-spacing: .02em !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+[data-theme="dark"] .db-nav-wrap {
+  padding-top: 16px !important;
+}
+
+[dir="rtl"] .db-header-brand {
+  margin-right: 0 !important;
+  margin-left: 16px !important;
+  padding-right: 0 !important;
+  padding-left: 16px !important;
+}
+
+[dir="rtl"] .db-header-brand::before {
+  right: auto;
+  left: 0;
+}
+
+@media (min-width: 992px) {
+  .db-header-brand::before {
+    display: none !important;
+  }
+}
+
+/* Dashboard Welcome Banner Button Styling & Hover Icon visibility */
+.db-welcome .btn-pn-white {
+  background: #FFFFFF !important;
+  color: var(--pn-ink) !important;
+  border: 1.5px solid #FFFFFF !important;
+  transition: var(--transition-lg) !important;
+}
+
+.db-welcome .btn-pn-white i {
+  color: var(--pn-ink) !important;
+  transition: var(--transition) !important;
+}
+
+/* Final dashboard dark sidebar alignment: match light theme layout. */
+[data-theme="dark"] .db-brand {
+  height: var(--db-header-h) !important;
+  min-height: var(--db-header-h) !important;
+  max-height: var(--db-header-h) !important;
+  padding: 0 20px !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  align-items: center !important;
+  background: transparent !important;
+}
+
+[data-theme="dark"] .db-brand-logo {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: var(--pn-ink) !important;
+}
+
+[data-theme="dark"] .db-brand-logo i {
+  color: var(--pn-ink) !important;
+}
+
+[data-theme="dark"] .db-brand-text {
+  min-width: 0 !important;
+  max-width: none !important;
+  gap: 0 !important;
+}
+
+[data-theme="dark"] .db-brand-text .db-brand-name {
+  font-size: 14.5px !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+}
+
+[data-theme="dark"] .db-brand-text .db-brand-tag {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  letter-spacing: .05em !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+[data-theme="dark"] .db-nav-wrap {
+  padding-top: 14px !important;
+}
+
+.db-welcome .btn-pn-white:hover,
+.db-welcome .btn-pn-white:focus {
+  background: transparent !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+}
+
+.db-welcome .btn-pn-white:hover i,
+.db-welcome .btn-pn-white:focus i {
+  color: #FFFFFF !important;
+}
+
+/* Final dashboard content top spacing reduction. */
+#db-content {
+  padding-top: 16px !important;
+}
+
+@media (max-width: 991.98px) {
+  #db-content {
+    padding-top: 12px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #db-content {
+    padding-top: 10px !important;
+  }
+}
+
+/* Final dashboard welcome banner: prevent scroll animation from creating a top gap. */
+.db-welcome[data-aos],
+.db-welcome[data-aos].aos-animate {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Dashboard mobile controls: keep RTL inside the menu and theme hover visible. */
+.db-mobile-menu-control {
+  display: none;
+}
+
+.db-menu-toggle-btn {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.db-menu-toggle-pill {
+  margin-left: auto;
+  min-width: 42px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+[dir="rtl"] .db-menu-toggle-pill {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.db-icon-btn:hover,
+.db-icon-btn:focus-visible {
+  background: var(--pn-ink) !important;
+  color: #fff !important;
+  border-color: var(--pn-ink) !important;
+}
+
+.db-icon-btn:hover i,
+.db-icon-btn:focus-visible i {
+  color: #fff !important;
+}
+
+@media (max-width: 991.98px) {
+  .db-header-dir-toggle {
+    display: none !important;
+  }
+
+  .db-mobile-menu-control {
+    display: block;
+  }
+}

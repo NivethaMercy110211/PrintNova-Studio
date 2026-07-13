@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrintNova Studio | Print Smarter. Brand Better.</title>
+  <meta name="description" content="Professional online printing store. Order business cards, banners, brochures, flyers and more. Upload your design, choose specs, track your job." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2.1" />
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="pn-navbar navbar navbar-expand-lg" role="navigation" aria-label="Main Navigation">
+  <div class="container-fluid px-4 px-md-5">
+    <a class="navbar-brand" href="index.html"><div class="nav-logo-icon"><i class="fa-solid fa-print"></i></div><div class="nav-brand-text"><span class="brand-name">PrintNova Studio</span><span class="brand-tag">Print Smarter. Brand Better.</span></div></a>
+    <button class="navbar-toggler border-0 ms-auto me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"><i class="fa-solid fa-bars" style="font-size:18px;"></i></button>
+    <div class="collapse navbar-collapse ms-4">
+      <ul class="navbar-nav align-items-center gap-1">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="home2.html">Home 2</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <button class="nav-icon-btn" data-theme-toggle data-theme-icon><i class="fa-solid fa-moon"></i></button>
+        <button class="nav-icon-btn" data-dir-toggle data-dir-icon><i class="fa-solid fa-arrow-left-to-bracket"></i></button>
+        <a href="login.html" class="btn-nav-login ms-2">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+  <div class="offcanvas-header"><a href="index.html" class="navbar-brand"><div class="nav-logo-icon" style="width:34px;height:34px;font-size:15px;"><i class="fa-solid fa-print"></i></div><div class="nav-brand-text"><span class="brand-name" style="font-size:15px;">PrintNova Studio</span></div></a><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+  <div class="offcanvas-body d-flex flex-column p-0">
+    <ul class="navbar-nav flex-column p-3">
+      <li><a class="nav-link active" href="index.html"><i class="fa-solid fa-house me-2" style="width:18px;color:var(--pn-blue);"></i>Home</a></li>
+      <li><a class="nav-link" href="home2.html"><i class="fa-solid fa-layer-group me-2" style="width:18px;color:var(--pn-blue);"></i>Home 2</a></li>
+      <li><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info me-2" style="width:18px;color:var(--pn-blue);"></i>About</a></li>
+      <li><a class="nav-link" href="products.html"><i class="fa-solid fa-box-open me-2" style="width:18px;color:var(--pn-blue);"></i>Products</a></li>
+      <li><a class="nav-link" href="services.html"><i class="fa-solid fa-gears me-2" style="width:18px;color:var(--pn-blue);"></i>Services</a></li>
+      <li><a class="nav-link" href="pricing.html"><i class="fa-solid fa-tag me-2" style="width:18px;color:var(--pn-blue);"></i>Pricing</a></li>
+      <li><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-2" style="width:18px;color:var(--pn-blue);"></i>Contact</a></li>
+      <li><a class="nav-link" href="dashboard.html"><i class="fa-solid fa-gauge-high me-2" style="width:18px;color:var(--pn-blue);"></i>Dashboard</a></li>
+    </ul>
+    <div class="px-3 pb-3 mt-2"><a href="login.html" class="btn-pn btn-pn-primary w-100 justify-content-center">Login</a></div>
+    <div class="mobile-controls">
+      <button class="nav-icon-btn flex-fill justify-content-center" data-theme-toggle data-theme-icon style="display:flex;align-items:center;gap:6px;"><i class="fa-solid fa-moon"></i><span style="font-size:12px;">Theme</span></button>
+      <button class="nav-icon-btn flex-fill justify-content-center" data-dir-toggle data-dir-icon style="display:flex;align-items:center;gap:6px;"><i class="fa-solid fa-arrow-left-to-bracket"></i><span style="font-size:12px;">RTL</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="pn-hero hero-gradient-1" id="home" style="background-image: linear-gradient(rgba(11,20,55,.6), rgba(11,20,55,.8)), url('images/banners/home.png'), url('file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/43d818c6-9e5e-461c-b8e6-51fbe6b5acbc/banner_home_1783618869798.png'); background-size: cover; background-position: center; background-repeat: no-repeat;" aria-label="Hero Section">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:28px 28px;z-index:1;"></div>
+  <div class="container hero-content position-relative" style="z-index:2;">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
+        <div class="hero-badge"><i class="fa-solid fa-award"></i> #1 Online Printing Service in India</div>
+        <h1 class="hero-title">Premium <span class="highlight">Print</span> &amp;<br>Branding <span class="highlight">Solutions</span></h1>
+        <p class="hero-sub">Order business cards, banners, brochures, flyers and packaging with one-click reordering and real-time tracking.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="dashboard.html" class="btn-pn btn-pn-white"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Design &amp; Order</a>
+          <a href="products.html" class="btn-pn" style="background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3);"><i class="fa-solid fa-boxes-stacked"></i> Browse Products</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-value">24h</div><div class="hero-stat-label">Express Delivery</div></div>
+          <div><div class="hero-stat-value">50K+</div><div class="hero-stat-label">Happy Customers</div></div>
+          <div><div class="hero-stat-value">100%</div><div class="hero-stat-label">Quality Guaranteed</div></div>
+        </div>
+      </div>
+      <div class="col-lg-5" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="hero-card float-anim">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.08em;">LIVE PRINT TRACKER</span>
+            <span class="badge" style="background:rgba(255,255,255,.15);font-size:10px;font-weight:700;padding:4px 10px;">ID: #PN-87452</span>
+          </div>
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;"><i class="fa-solid fa-id-card"></i></div>
+            <div>
+              <div style="font-size:15px;font-weight:800;">Premium Business Cards</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.65);">Qty: 500 · Soft-touch Finish</div>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-4">
+            <div style="flex:1;">
+              <div style="font-size:12.5px;font-weight:600;color:#fff;">Printing…</div>
+              <div style="height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin-top:5px;overflow:hidden;"><div style="height:100%;width:65%;background:#FFFFFF;border-radius:2px;"></div></div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3 pt-3" style="border-top:1px solid rgba(255,255,255,.15);"><span style="font-size:12.5px;color:rgba(255,255,255,.65);">Estimated Delivery: Tomorrow</span><span style="font-size:13px;font-weight:700;color:#fff;"><i class="fa-solid fa-truck-fast"></i> Express</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS PREVIEW -->
+<section class="section-pad" aria-label="Products Preview">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge"><i class="fa-solid fa-box-open"></i> Print Shop</span>
+      <h2 class="section-title">Popular Print Products</h2>
+      <div class="divider-gradient"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="product-card">
+          <div class="product-img-wrap"><img src="images/product_cards.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/43d818c6-9e5e-461c-b8e6-51fbe6b5acbc/product_cards_1783603616965.png';" alt="Business Cards"><div class="product-overlay"><a href="products.html" class="btn-pn btn-pn-white" style="font-size:12px;padding:7px 16px;">View Options</a></div><span class="product-tag">Popular</span></div>
+          <div class="product-info"><div class="product-name">Business Cards</div><div class="product-desc">Standard, Spot UV, Foil stamped cards on thick premium substrates.</div><div class="product-price">From ₹299 <span>/ 100 pcs</span></div></div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="product-card">
+          <div class="product-img-wrap"><img src="images/product_banners.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/43d818c6-9e5e-461c-b8e6-51fbe6b5acbc/product_banners_1783603631735.png';" alt="Flex Banners"><div class="product-overlay"><a href="products.html" class="btn-pn btn-pn-white" style="font-size:12px;padding:7px 16px;">View Options</a></div></div>
+          <div class="product-info"><div class="product-name">Flex Banners</div><div class="product-desc">Waterproof, high-resolution signage and hoardings printed with UV-stable inks.</div><div class="product-price">From ₹599 <span>/ sq.ft</span></div></div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="product-card">
+          <div class="product-img-wrap"><img src="images/product_brochures.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/43d818c6-9e5e-461c-b8e6-51fbe6b5acbc/product_brochures_1783603649810.png';" alt="Brochures &amp; Catalogs"><div class="product-overlay"><a href="products.html" class="btn-pn btn-pn-white" style="font-size:12px;padding:7px 16px;">View Options</a></div></div>
+          <div class="product-info"><div class="product-name">Brochures &amp; Catalogs</div><div class="product-desc">Bi-fold, tri-fold and booklets on high-GSM art papers with options for spot UV.</div><div class="product-price">From ₹899 <span>/ 100 pcs</span></div></div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="product-card">
+          <div class="product-img-wrap"><img src="images/product_stickers.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/43d818c6-9e5e-461c-b8e6-51fbe6b5acbc/product_stickers_1783603663351.png';" alt="Stickers &amp; Labels"><div class="product-overlay"><a href="products.html" class="btn-pn btn-pn-white" style="font-size:12px;padding:7px 16px;">View Options</a></div><span class="product-tag">Hot</span></div>
+          <div class="product-info"><div class="product-name">Stickers &amp; Labels</div><div class="product-desc">Custom shape die-cut vinyl stickers and barcodes on roll or sheet formats.</div><div class="product-price">From ₹199 <span>/ 100 pcs</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section-pad bg-surface-2" aria-label="How it works">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge"><i class="fa-solid fa-circle-play"></i> Workflow</span>
+      <h2 class="section-title">Ordering Prints Made Simple</h2>
+      <div class="divider-gradient"></div>
+    </div>
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="d-flex flex-column gap-4">
+          <div class="simple-workflow-card d-flex align-items-start gap-4" style="background:var(--bg-surface); padding:24px; border-radius:var(--radius-lg); border:1px solid var(--border-color); box-shadow:var(--shadow-sm); margin:0;">
+            <div class="step-number" style="margin: 0; flex-shrink: 0; width: 44px; height: 44px; font-size: 18px; font-weight:800; border-radius:50%; background:var(--pn-blue-light); border:2px solid var(--pn-blue); color:var(--pn-blue); display: flex; align-items: center; justify-content: center;">1</div>
+            <div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Configure &amp; Upload</div>
+              <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">Select print specs, upload artwork, and approve the preflight check instantly on the dashboard.</div>
+            </div>
+          </div>
+          <div class="simple-workflow-card d-flex align-items-start gap-4" style="background:var(--bg-surface); padding:24px; border-radius:var(--radius-lg); border:1px solid var(--border-color); box-shadow:var(--shadow-sm); margin:0;">
+            <div class="step-number" style="margin: 0; flex-shrink: 0; width: 44px; height: 44px; font-size: 18px; font-weight:800; border-radius:50%; background:var(--pn-blue-light); border:2px solid var(--pn-blue); color:var(--pn-blue); display: flex; align-items: center; justify-content: center;">2</div>
+            <div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Real-Time Tracking</div>
+              <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">Track every stage from prepress, printing, cutting, finishing, packaging, to dispatch in real-time.</div>
+            </div>
+          </div>
+          <div class="simple-workflow-card d-flex align-items-start gap-4" style="background:var(--bg-surface); padding:24px; border-radius:var(--radius-lg); border:1px solid var(--border-color); box-shadow:var(--shadow-sm); margin:0;">
+            <div class="step-number" style="margin: 0; flex-shrink: 0; width: 44px; height: 44px; font-size: 18px; font-weight:800; border-radius:50%; background:var(--pn-blue-light); border:2px solid var(--pn-blue); color:var(--pn-blue); display: flex; align-items: center; justify-content: center;">3</div>
+            <div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">Quick Reorders</div>
+              <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">Reorder past jobs with a single click — no file upload or spec re-entry required. Files saved securely.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="dashboard-mockup" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column;">
+          <!-- Window Header -->
+          <div style="background: var(--bg-surface-2); padding: 12px 16px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 8px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f56;"></div>
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #ffbd2e;"></div>
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #27c93f;"></div>
+            <div style="background: var(--bg-surface-2); border: 1px solid var(--border-color); border-radius: 6px; padding: 4px 12px; font-size: 11px; color: var(--text-muted); margin-left: 20px; display: flex; align-items: center; gap: 6px; flex: 1; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+              <i class="fa-solid fa-lock" style="font-size: 9px;"></i> dashboard.printnovastudio.com/order
+            </div>
+          </div>
+          <!-- Dashboard Workspace -->
+          <div style="display: flex; min-height: 320px;">
+            <!-- Sidebar -->
+            <div style="width: 54px; background: var(--bg-surface-2); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; padding-top: 20px; gap: 24px;">
+              <div style="color: var(--pn-blue); font-size: 16px;"><i class="fa-solid fa-sliders"></i></div>
+              <div style="color: var(--text-muted); font-size: 16px;"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+              <div style="color: var(--text-muted); font-size: 16px;"><i class="fa-solid fa-chart-line"></i></div>
+              <div style="color: var(--text-muted); font-size: 16px;"><i class="fa-solid fa-box"></i></div>
+            </div>
+            <!-- Main Area -->
+            <div style="flex: 1; display: flex; padding: 20px; gap: 20px; flex-wrap: wrap;">
+              <!-- Canvas Mockup -->
+              <div style="flex: 1.2; background: var(--bg-surface-2); border: 1px dashed var(--border-color); border-radius: 12px; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 16px;">
+                <!-- Grid overlay -->
+                <div style="position: absolute; inset: 0; opacity: 0.05; background-image: linear-gradient(var(--pn-blue) 1px, transparent 1px), linear-gradient(90deg, var(--pn-blue) 1px, transparent 1px); background-size: 16px 16px;"></div>
+                <!-- Mockup Card -->
+                <div style="width: 170px; height: 95px; background: linear-gradient(135deg, #1e3a8a, #3b82f6); border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); display: flex; flex-direction: column; justify-content: space-between; padding: 12px; color: #fff; position: relative;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <i class="fa-solid fa-print" style="font-size: 13px; opacity: 0.8;"></i>
+                    <div style="width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 8px;"><i class="fa-solid fa-check"></i></div>
+                  </div>
+                  <div>
+                    <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.05em;">PRINTNOVA</div>
+                    <div style="font-size: 7px; opacity: 0.7; margin-top: 2px;">PREMIUM MATTE CARD</div>
+                  </div>
+                </div>
+                <div style="font-size: 10px; color: var(--text-muted); margin-top: 14px; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-expand"></i> Safe Margins Active (3mm bleed)</div>
+              </div>
+              <!-- Controls -->
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; min-width: 150px;">
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-primary);">Specifications</div>
+                <div>
+                  <label style="font-size: 9px; color: var(--text-muted); display: block; margin-bottom: 4px;">Paper Type</label>
+                  <div style="font-size: 11px; padding: 6px 10px; background: var(--bg-surface-2); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-weight: 600; display: flex; justify-content: space-between; align-items: center;">
+                    350gsm Art Card <i class="fa-solid fa-chevron-down" style="font-size: 8px; color: var(--text-muted);"></i>
+                  </div>
+                </div>
+                <div>
+                  <label style="font-size: 9px; color: var(--text-muted); display: block; margin-bottom: 4px;">Finish Option</label>
+                  <div style="font-size: 11px; padding: 6px 10px; background: var(--bg-surface-2); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-weight: 600; display: flex; justify-content: space-between; align-items: center;">
+                    Matte + Spot UV <i class="fa-solid fa-chevron-down" style="font-size: 8px; color: var(--text-muted);"></i>
+                  </div>
+                </div>
+                <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+                  <div style="font-size: 11px; display: flex; justify-content: space-between; color: var(--text-primary); font-weight: 700;">
+                    <span>Proof:</span>
+                    <span style="color: #27c93f;"><i class="fa-solid fa-circle-check"></i> Passed</span>
+                  </div>
+                  <button style="width: 100%; border: none; background: var(--pn-blue); color: #fff; border-radius: 6px; padding: 8px; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(37,99,235,0.2);">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload &amp; Approve
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL FEATURE TILES -->
+<section class="section-pad" aria-label="Features Grid">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-5" data-aos="fade-right">
+        <span class="section-badge"><i class="fa-solid fa-shield-check"></i> Quality Promise</span>
+        <h2 class="section-title mt-2">Print Perfection is Our Standard</h2>
+        <div class="section-line" style="margin:16px 0;"></div>
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:24px;">At PrintNova, we combine advanced digital and offset presses with a comprehensive preflight inspection workflow to ensure high quality and absolute colour accuracy.</p>
+        <a href="about.html" class="btn-pn btn-pn-primary"><i class="fa-solid fa-arrow-right"></i> Read Our Story</a>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="row g-4 pn-staggered-grid">
+          <div class="col-sm-6 col-12">
+            <div style="background:var(--pn-blue);border-radius:var(--radius-lg);padding:28px;text-align:center;color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.2);">
+              <div style="font-size:24px;margin-bottom:10px;"><i class="fa-solid fa-award"></i></div>
+              <div style="font-size:15px;font-weight:700;margin-bottom:6px;">ISO Certified Quality</div>
+              <div style="font-size:12.5px;opacity:.8;">Standardised procedures and quality checkpoints.</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-12">
+            <div style="background:var(--pn-blue);border-radius:var(--radius-lg);padding:28px;text-align:center;color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.2);">
+              <div style="font-size:24px;margin-bottom:10px;"><i class="fa-solid fa-leaf"></i></div>
+              <div style="font-size:15px;font-weight:700;margin-bottom:6px;">FSC Certified Stocks</div>
+              <div style="font-size:12.5px;opacity:.8;">Eco-friendly paper options from sustainable sources.</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-12">
+            <div style="background:var(--pn-blue);border-radius:var(--radius-lg);padding:28px;text-align:center;color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.2);">
+              <div style="font-size:24px;margin-bottom:10px;"><i class="fa-solid fa-rotate"></i></div>
+              <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Free Reprints</div>
+              <div style="font-size:12.5px;opacity:.8;">Free reprints if results differ from proofs.</div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-12">
+            <div style="background:var(--pn-blue);border-radius:var(--radius-lg);padding:28px;text-align:center;color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.2);">
+              <div style="font-size:24px;margin-bottom:10px;"><i class="fa-solid fa-shield-halved"></i></div>
+              <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Secure Packaging</div>
+              <div style="font-size:12.5px;opacity:.8;">Inspected and packed to prevent shipping damage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECO-FRIENDLY INITIATIVE -->
+<section class="section-pad bg-surface" aria-label="Eco-Friendly Initiatives">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge"><i class="fa-solid fa-leaf"></i> Eco-Commitment</span>
+      <h2 class="section-title">Green Printing Initiatives</h2>
+      <div class="divider-gradient"></div>
+      <p class="section-subtitle mt-3">We balance high-fidelity print quality with deep ecological responsibility in our production workflows.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="pn-card" style="padding: 0 !important; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="images/eco_soy_ink.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/c7037c25-03a7-4db5-84be-1b852d559f81/eco_soy_ink_1783937166071.png';" alt="Soy-Based Printing Inks" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="pn-card-body" style="padding: 24px;">
+            <div class="pn-card-icon icon-green" style="margin-bottom: 14px;"><i class="fa-solid fa-droplet"></i></div>
+            <div class="pn-card-title" style="font-size:15px; font-weight:700;">Soy-Based Printing Inks</div>
+            <div class="pn-card-text" style="font-size:13px; color:var(--text-secondary);">We substitute traditional petroleum inks with organic, soy-based alternatives. This cuts VOC emissions, improves cardboard recyclability, and outputs brighter, richer color yields.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="pn-card" style="padding: 0 !important; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="images/eco_fsc_paper.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/c7037c25-03a7-4db5-84be-1b852d559f81/eco_fsc_paper_1783937187288.png';" alt="FSC-Certified Stock Materials" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="pn-card-body" style="padding: 24px;">
+            <div class="pn-card-icon icon-green" style="margin-bottom: 14px;"><i class="fa-solid fa-recycle"></i></div>
+            <div class="pn-card-title" style="font-size:15px; font-weight:700;">FSC-Certified Stock Materials</div>
+            <div class="pn-card-text" style="font-size:13px; color:var(--text-secondary);">We offer FSC-certified recycled paper and board options across our stationery lines, ensuring the raw pulps are sourced exclusively from responsibly managed forestry.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="pn-card" style="padding: 0 !important; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="images/eco_prepress.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/c7037c25-03a7-4db5-84be-1b852d559f81/eco_prepress_1783937213035.png';" alt="Chemical-Free Prepress" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div class="pn-card-body" style="padding: 24px;">
+            <div class="pn-card-icon icon-green" style="margin-bottom: 14px;"><i class="fa-solid fa-plug-circle-check"></i></div>
+            <div class="pn-card-title" style="font-size:15px; font-weight:700;">Chemical-Free Prepress</div>
+            <div class="pn-card-text" style="font-size:13px; color:var(--text-secondary);">Our digital plate production utilizes chemical-free imaging. This eliminates the disposal of heavy developers and chemical toxins into the local water networks.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-pad bg-surface-2" aria-label="Testimonials">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-badge"><i class="fa-solid fa-quote-left"></i> Reviews</span>
+      <h2 class="section-title">What Businesses Say About Us</h2>
+      <div class="divider-gradient"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="testimonial-text">"PrintNova changed how we manage corporate stationery. We order business cards for all branches using the reorder system in seconds."</div>
+          <div class="testimonial-author"><img src="images/avatar_vikram.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/fd2e64b2-8f8b-458f-8177-729e7dcb8f58/avatar_vikram_1783872538882.png';" alt="Vikram Seth" class="author-avatar" style="object-fit: cover;" /><div><div class="author-name">Vikram Seth</div><div class="author-role">Director, TechStart Pvt Ltd</div></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="testimonial-text">"The flex banners we ordered for our retail outlets are stunning. Rich colours, heavy duty material and quick delivery."</div>
+          <div class="testimonial-author"><img src="images/avatar_anjali.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/fd2e64b2-8f8b-458f-8177-729e7dcb8f58/avatar_anjali_1783872565000.png';" alt="Anjali Mehta" class="author-avatar" style="object-fit: cover;" /><div><div class="author-name">Anjali Mehta</div><div class="author-role">Branding Head, Leaf Organics</div></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="testimonial-text">"Outstanding customer support. The preflight check flagged a resolution issue in our brochure layout, saving us from a printing disaster."</div>
+          <div class="testimonial-author"><img src="images/avatar_rajesh.png" onerror="this.onerror=null; this.src='file:///C:/Users/NIVETHA/.gemini/antigravity-ide/brain/fd2e64b2-8f8b-458f-8177-729e7dcb8f58/avatar_rajesh_1783872581775.png';" alt="Rajesh Kumar" class="author-avatar" style="object-fit: cover;" /><div><div class="author-name">Rajesh Kumar</div><div class="author-role">Founder, Apex IT Solutions</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section cta-has-bg" aria-label="CTA">
+  <div class="container position-relative text-center" style="z-index:2;">
+    <h2 class="cta-title">Upgrade Your Brand Assets Today</h2>
+    <p class="cta-sub">Join over 10,000+ growing companies that trust PrintNova for fast, quality printing.</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="dashboard.html" class="btn-pn btn-pn-white"><i class="fa-solid fa-cloud-arrow-up"></i> Start Print Job</a>
+      <a href="contact.html" class="btn-pn" style="background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.35);"><i class="fa-solid fa-phone"></i> Talk to Expert</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pn-footer" role="contentinfo"><div class="container"><div class="row g-5"><div class="col-lg-4 col-md-6" data-aos="fade-up"><a href="index.html" class="footer-brand"><div class="nav-logo-icon" style="width:38px;height:38px;font-size:17px;"><i class="fa-solid fa-print"></i></div><div class="nav-brand-text"><span class="brand-name" style="color:#fff;font-size:16px;">PrintNova Studio</span></div></a><p class="footer-desc">India's print &amp; branding studio.</p><div class="footer-social"><a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div><div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="100"><div class="footer-heading">Quick Links</div><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li><li><a href="about.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li><li><a href="products.html"><i class="fa-solid fa-angle-right"></i> Products</a></li><li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-angle-right"></i> Pricing</a></li><li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li></ul></div><div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="150"><div class="footer-heading">Services</div><ul class="footer-links"><li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Business Cards</a></li><li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Flex Banners</a></li><li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Brochures</a></li><li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Bulk Printing</a></li><li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Branding Pack</a></li><li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Reorder</a></li></ul></div><div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="footer-heading">Contact &amp; Newsletter</div><div class="footer-contact-item"><div class="footer-contact-icon"><i class="fa-solid fa-location-dot"></i></div><div>Plot 14, Industrial Estate, Anna Nagar, Chennai – 600040</div></div><div class="footer-contact-item"><div class="footer-contact-icon"><i class="fa-solid fa-phone"></i></div><div>+91 98400 12345</div></div><div class="footer-contact-item"><div class="footer-contact-icon"><i class="fa-solid fa-envelope"></i></div><div>hello@printnovastudio.com</div></div><form class="newsletter-form" onsubmit="event.preventDefault();showToast('Subscribed!','success');"><input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Newsletter email" /><button type="submit" class="btn-newsletter"><i class="fa-solid fa-paper-plane"></i></button></form></div></div></div><div class="footer-bottom"><div class="container"><div class="row align-items-center"><div class="col-md-6 text-center text-md-start">&copy; 2026 PrintNova Studio. All Rights Reserved.</div><div class="col-md-6 text-center text-md-end mt-2 mt-md-0"><a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Refund Policy</a></div></div></div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
