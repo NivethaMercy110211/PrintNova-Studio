@@ -22,7 +22,10 @@ Copy-Item "$SRC\enterprise_manager_1783942872905.png" -Destination "$DST\enterpr
 Copy-Item "$SRC\enterprise_billing_1783942892357.png" -Destination "$DST\enterprise_billing.png" -Force
 
 # Banner Images
-Copy-Item "$SRC\banner_home2_1783963696333.png" -Destination "$DST\banners\home2.png" -Force
+Copy-Item "C:\Users\NIVETHA\.gemini\antigravity-ide\brain\f8244bf8-b4bd-4e10-b100-9e92dfd1f49f\banner_home2_clean_1784107057236.png" -Destination "$DST\banners\home2.png" -Force
+
+# Auth Images
+Copy-Item "C:\Users\NIVETHA\.gemini\antigravity-ide\brain\f8244bf8-b4bd-4e10-b100-9e92dfd1f49f\auth_forgot_1784108678622.png" -Destination "$DST\auth\forgot.png" -Force
 
 # Product Images
 Copy-Item "$SRC\product_bookmarks_1783963865951.png" -Destination "$DST\product_bookmarks.png" -Force

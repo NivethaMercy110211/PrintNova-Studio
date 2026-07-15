@@ -4047,6 +4047,25 @@ section[aria-label="Clients"] i.fa-solid {
   color: #FFFFFF !important;
 }
 
+/* Final footer newsletter button state: keep submit icon visible on hover in both themes. */
+.pn-footer .btn-newsletter:hover,
+.pn-footer .btn-newsletter:focus-visible,
+[data-theme="dark"] .pn-footer .btn-newsletter:hover,
+[data-theme="dark"] .pn-footer .btn-newsletter:focus-visible {
+  background: var(--pn-ink) !important;
+  color: #FFFFFF !important;
+  border-color: var(--pn-ink) !important;
+}
+
+.pn-footer .btn-newsletter:hover i,
+.pn-footer .btn-newsletter:focus-visible i,
+[data-theme="dark"] .pn-footer .btn-newsletter:hover i,
+[data-theme="dark"] .pn-footer .btn-newsletter:focus-visible i {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 /* Final override: footer tagline must stay visible in dark theme. */
 html[data-theme="dark"] .pn-footer .footer-desc,
 html[data-theme="dark"] .pn-footer .footer-desc::after {
@@ -6458,6 +6477,18 @@ section[aria-label="Clients"] .row.g-3 > [class*="col-"] > div > div {
   }
 }
 
+/* Services enterprise tablet: keep Flexible Billing heading on two lines. */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  section[aria-label="Enterprise Solutions"] .row.g-4 > .col-md-4:nth-child(3) .pn-card-title {
+    width: 120px !important;
+    max-width: 120px !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+    overflow-wrap: normal !important;
+    text-wrap: balance;
+  }
+}
+
 /* Services all-services 1024: Bulk Printing text 5-line wrap. */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   section[aria-label="All Services"] .row.g-4 > .col-md-6:nth-child(3) .pn-card-text {
@@ -6672,3 +6703,98 @@ section[aria-label="Volume Discounts"] .pricing-savings-panel .row.g-4 .pn-card-
   }
 }
 
+/* Home dashboard mockup: prevent the proof preview from collapsing on mobile. */
+@media (max-width: 575.98px) {
+  .dashboard-mockup-workspace {
+    min-height: auto !important;
+  }
+
+  .dashboard-mockup-main {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 14px !important;
+    padding: 16px !important;
+    min-width: 0 !important;
+  }
+
+  .dashboard-mockup-canvas {
+    width: 100% !important;
+    min-height: 190px !important;
+    flex: 0 0 auto !important;
+    padding: 18px !important;
+  }
+
+  .dashboard-mockup-card-preview {
+    width: min(170px, 100%) !important;
+    min-width: 150px !important;
+    height: 95px !important;
+  }
+
+  .dashboard-mockup-safe-text {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    flex-wrap: wrap !important;
+    line-height: 1.35 !important;
+  }
+}
+
+/* About story card: keep the floating icon from overlapping text on mobile. */
+@media (max-width: 575.98px) {
+  .about-story-card {
+    padding: 44px 28px 32px !important;
+    overflow: hidden !important;
+  }
+
+  .about-story-icon {
+    top: 18px !important;
+    right: 18px !important;
+    width: 58px !important;
+    height: 58px !important;
+    font-size: 22px !important;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .18) !important;
+    z-index: 1 !important;
+  }
+}
+
+/* Pricing flyer table: keep columns readable inside the mobile viewport. */
+.flyer-pricing-table-wrap {
+  width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-md);
+}
+
+.flyer-pricing-table {
+  min-width: 620px !important;
+}
+
+.flyer-pricing-table th,
+.flyer-pricing-table td {
+  white-space: nowrap !important;
+}
+
+.flyer-pricing-table td:first-child,
+.flyer-pricing-table th:first-child {
+  white-space: normal !important;
+  min-width: 150px !important;
+}
+
+@media (max-width: 575.98px) {
+  .flyer-pricing-table-wrap {
+    margin-inline: 0 !important;
+    padding-bottom: 8px !important;
+    max-width: 100% !important;
+  }
+
+  .flyer-pricing-table {
+    min-width: 640px !important;
+  }
+
+  .flyer-pricing-table th,
+  .flyer-pricing-table td {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}

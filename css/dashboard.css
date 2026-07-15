@@ -1998,6 +1998,46 @@
   margin-top: 2px !important;
 }
 
+/* Reorder cards: keep all three cards equal height on iPad Pro and desktop. */
+#sec-reorder > .db-stat > .row.g-3 {
+  align-items: stretch !important;
+}
+
+#sec-reorder > .db-stat > .row.g-3 > [class*="col-"] {
+  display: flex !important;
+}
+
+#sec-reorder > .db-stat > .row.g-3 > [class*="col-"] > div {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 244px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#sec-reorder > .db-stat > .row.g-3 > [class*="col-"] > div > div:first-child {
+  flex: 0 0 140px !important;
+  height: 140px !important;
+}
+
+#sec-reorder > .db-stat > .row.g-3 > [class*="col-"] > div > div:last-child {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#sec-reorder > .db-stat > .row.g-3 > [class*="col-"] > div > div:last-child > div:first-child {
+  min-height: 34px !important;
+}
+
+#sec-reorder > .db-stat > .row.g-3 > [class*="col-"] > div > div:last-child > div:nth-child(2) {
+  min-height: 34px !important;
+}
+
+#sec-reorder > .db-stat > .row.g-3 > [class*="col-"] > div > div:last-child > div:last-child {
+  margin-top: auto !important;
+}
+
 /* Mobile welcome metrics: keep the third stat centered below the first row. */
 @media (max-width: 575.98px) {
   .db-welcome .db-welcome-meta {
