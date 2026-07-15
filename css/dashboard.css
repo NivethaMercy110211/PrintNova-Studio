@@ -152,6 +152,55 @@
   border-radius: 20px;
 }
 
+.db-nav .db-logout-nav {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #DC2626;
+  text-align: left;
+}
+
+.db-nav .db-logout-nav .db-nav-icon,
+.db-nav .db-logout-nav i {
+  color: #DC2626;
+}
+
+.db-nav .db-logout-nav:hover,
+.db-nav .db-logout-nav:focus {
+  background: rgba(220, 38, 38, .1);
+  color: #B91C1C;
+}
+
+.db-nav .db-logout-nav:hover .db-nav-icon,
+.db-nav .db-logout-nav:hover i,
+.db-nav .db-logout-nav:focus .db-nav-icon,
+.db-nav .db-logout-nav:focus i {
+  color: #B91C1C;
+}
+
+[data-theme="dark"] .db-nav .db-logout-nav,
+[data-theme="dark"] .db-nav .db-logout-nav .db-nav-icon,
+[data-theme="dark"] .db-nav .db-logout-nav i {
+  color: #F87171;
+}
+
+[data-theme="dark"] .db-nav .db-logout-nav:hover,
+[data-theme="dark"] .db-nav .db-logout-nav:focus {
+  background: rgba(248, 113, 113, .13);
+  color: #FCA5A5;
+}
+
+[data-theme="dark"] .db-nav .db-logout-nav:hover .db-nav-icon,
+[data-theme="dark"] .db-nav .db-logout-nav:hover i,
+[data-theme="dark"] .db-nav .db-logout-nav:focus .db-nav-icon,
+[data-theme="dark"] .db-nav .db-logout-nav:focus i {
+  color: #FCA5A5;
+}
+
+[dir="rtl"] .db-nav .db-logout-nav {
+  text-align: right;
+}
+
 .db-sidebar-footer {
   padding: 14px 20px;
   border-top: 1px solid rgba(255,255,255,.07);
@@ -2162,4 +2211,54 @@
     padding-right: 0 !important;
     justify-content: center !important;
   }
+}
+
+/* Sidebar logout lives outside the profile dropdown and must stay visibly red. */
+.db-nav .nav-link.db-logout-nav,
+.db-nav .nav-link.db-logout-nav .db-nav-icon,
+.db-nav .nav-link.db-logout-nav i {
+  color: #DC2626 !important;
+}
+
+.db-nav .nav-link.db-logout-nav {
+  width: 100% !important;
+  border: 0 !important;
+  background: transparent !important;
+  text-align: left !important;
+}
+
+.db-nav .nav-link.db-logout-nav:hover,
+.db-nav .nav-link.db-logout-nav:focus {
+  background: rgba(220, 38, 38, .1) !important;
+  color: #B91C1C !important;
+}
+
+.db-nav .nav-link.db-logout-nav:hover .db-nav-icon,
+.db-nav .nav-link.db-logout-nav:hover i,
+.db-nav .nav-link.db-logout-nav:focus .db-nav-icon,
+.db-nav .nav-link.db-logout-nav:focus i {
+  color: #B91C1C !important;
+}
+
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav,
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav .db-nav-icon,
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav i {
+  color: #F87171 !important;
+}
+
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav:hover,
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav:focus {
+  background: rgba(248, 113, 113, .13) !important;
+  color: #FCA5A5 !important;
+}
+
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav:hover .db-nav-icon,
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav:hover i,
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav:focus .db-nav-icon,
+[data-theme="dark"] .db-nav .nav-link.db-logout-nav:focus i {
+  color: #FCA5A5 !important;
+}
+
+[dir="rtl"] .db-nav .nav-link.db-logout-nav {
+  text-align: right !important;
 }
