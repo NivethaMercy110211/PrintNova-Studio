@@ -56,16 +56,14 @@
       </a>
 
       <h1 class="auth-form-title">Sign In</h1>
-      <p class="auth-form-sub">Don't have an account? <a href="signup.html" class="auth-link">Create one free</a></p>
+      <p class="auth-form-sub">Access your dashboard, orders, invoices, and saved designs.</p>
 
       <!-- Login Form -->
       <form id="loginForm" onsubmit="handleLogin(event)" novalidate>
         <div class="auth-input-group">
-          <span class="auth-input-icon"><i class="fa-solid fa-envelope"></i></span>
           <input type="email" class="auth-input" id="login-email" placeholder="Email address" required autocomplete="email" aria-label="Email address" />
         </div>
         <div class="auth-input-group">
-          <span class="auth-input-icon"><i class="fa-solid fa-lock"></i></span>
           <input type="password" class="auth-input" id="login-password" placeholder="Password" required autocomplete="current-password" aria-label="Password" />
           <button type="button" class="auth-eye-btn" onclick="togglePass('login-password',this)" aria-label="Toggle password visibility"><i class="fa-solid fa-eye"></i></button>
         </div>
@@ -86,12 +84,14 @@
 
       <!-- Social Login -->
       <div class="d-flex flex-column gap-2 mb-3">
-        <button class="social-auth-btn" onclick="showToast('Google sign-in coming soon!','info')"><i class="fa-brands fa-google"></i> Continue with Google</button>
+        <button class="social-auth-btn social-google" onclick="showToast('Google sign-in coming soon!','info')"><i class="fa-brands fa-google"></i> Continue with Google</button>
         <div class="row g-2">
-          <div class="col-6"><button class="social-auth-btn" onclick="showToast('Facebook sign-in coming soon!','info')"><i class="fa-brands fa-facebook"></i> Facebook</button></div>
-          <div class="col-6"><button class="social-auth-btn" onclick="showToast('Apple sign-in coming soon!','info')"><i class="fa-brands fa-apple"></i> Apple</button></div>
+          <div class="col-6"><button class="social-auth-btn social-facebook" onclick="showToast('Facebook sign-in coming soon!','info')"><i class="fa-brands fa-facebook"></i> Facebook</button></div>
+          <div class="col-6"><button class="social-auth-btn social-apple" onclick="showToast('Apple sign-in coming soon!','info')"><i class="fa-brands fa-apple"></i> Apple</button></div>
         </div>
       </div>
+
+      <p class="auth-switch-link">Don't have an account? <a href="signup.html" class="auth-link">Create one free</a></p>
 
       <p class="auth-footer-text">By signing in, you agree to our <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a>.</p>
     </div>

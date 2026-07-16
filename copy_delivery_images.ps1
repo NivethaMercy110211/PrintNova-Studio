@@ -30,4 +30,8 @@ Copy-Item "C:\Users\NIVETHA\.gemini\antigravity-ide\brain\f8244bf8-b4bd-4e10-b10
 # Product Images
 Copy-Item "$SRC\product_bookmarks_1783963865951.png" -Destination "$DST\product_bookmarks.png" -Force
 
+# About Page Journey Image
+Copy-Item "C:\Users\NIVETHA\.gemini\antigravity-ide\brain\1433e77b-ff58-4538-afae-4b7c8896ba8a\about_journey_clean_1784168690579.png" -Destination "$DST\about_journey_clean.png" -Force
+
 Write-Host "Done! Copying complete."
+

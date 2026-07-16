@@ -247,58 +247,12 @@
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
         <div class="col-lg-8 text-center">
           <div style="background:var(--bg-surface-2); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:40px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column; align-items:center;">
-            <div style="width:240px; height:180px; margin-bottom:20px; filter:drop-shadow(0 12px 28px rgba(37,99,235,.2));">
-              <svg viewBox="0 0 200 130" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#4ade80" />
-                    <stop offset="100%" stop-color="#166534" />
-                  </linearGradient>
-                  <linearGradient id="blueGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#3b82f6" />
-                    <stop offset="100%" stop-color="#1d4ed8" />
-                  </linearGradient>
-                  <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
-                    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.15" />
-                  </filter>
-                </defs>
-
-                <!-- Glowing Base Ring -->
-                <ellipse cx="100" cy="95" rx="45" ry="15" fill="rgba(37, 99, 235, 0.12)" />
-                <ellipse cx="100" cy="95" rx="35" ry="12" fill="none" stroke="var(--pn-blue)" stroke-width="2" stroke-dasharray="4,4" opacity="0.6" />
-
-                <!-- Isometric Delivery Box -->
-                <g transform="translate(100, 80)" filter="url(#dropShadow)">
-                  <!-- Left Face -->
-                  <path d="M 0,0 L -24,-12 L -24,14 L 0,26 Z" fill="#ea580c" />
-                  <!-- Right Face -->
-                  <path d="M 0,0 L 24,-12 L 24,14 L 0,26 Z" fill="#f97316" />
-                  <!-- Top Face -->
-                  <path d="M 0,0 L -24,-12 L 0,-24 L 24,-12 Z" fill="#fdba74" />
-                  
-                  <!-- Tape detail on Top -->
-                  <path d="M -6,-15 L 0,-12 L 6,-15 L 0,-18 Z" fill="#c2410c" />
-                  <!-- Tape detail on Left -->
-                  <path d="M 0,0 L -6,-3 L -6,23 L 0,26 Z" fill="#c2410c" opacity="0.8" />
-                  <!-- Tape detail on Right -->
-                  <path d="M 0,0 L 6,-3 L 6,23 L 0,26 Z" fill="#c2410c" />
-                </g>
-
-                <!-- Floating Isometric Location Pin -->
-                <g transform="translate(100, 36)" filter="url(#dropShadow)">
-                  <path d="M0,0 C-12,-12 -12,-24 0,-24 C12,-24 12,-12 0,0 Z" fill="url(#blueGrad2)" />
-                  <circle cx="0" cy="-14" r="4.5" fill="#ffffff" />
-                </g>
-
-                <!-- Decorative Sparkles -->
-                <path d="M 45,35 L 48,38 L 45,41 L 42,38 Z" fill="#facc15" />
-                <path d="M 155,45 L 158,48 L 155,51 L 152,48 Z" fill="#facc15" />
-                <path d="M 140,85 L 142,87 L 140,89 L 138,87 Z" fill="#22c55e" />
-              </svg>
+            <div style="width:100%; height:380px; margin-bottom:24px; border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
+              <iframe src="https://maps.google.com/maps?q=Plot%2014,%20Industrial%20Estate,%20Anna%20Nagar,%20Chennai%20-%20600040&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:8px;">Primary Fulfillment Center</div>
             <div style="font-size:14.5px; color:var(--text-secondary); max-width:480px; line-height:1.6; margin-bottom:24px;">Plot 14, Industrial Estate, Anna Nagar, Chennai – 600040</div>
-            <a href="https://maps.google.com" target="_blank" class="btn-pn btn-pn-primary" style="font-size:13px; padding:10px 24px;"><i class="fa-solid fa-directions"></i> Get Directions to Facility</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Plot+14,+Industrial+Estate,+Anna+Nagar,+Chennai+-+600040" target="_blank" class="btn-pn btn-pn-primary" style="font-size:13px; padding:10px 24px;"><i class="fa-solid fa-directions"></i> Get Directions to Facility</a>
           </div>
         </div>
       </div>
@@ -368,7 +322,7 @@
               <div style="font-size:13px;font-weight:700;letter-spacing:.06em;opacity:.75;margin-bottom:8px;">HEAD OFFICE</div>
               <div style="font-size:18px;font-weight:800;margin-bottom:14px;">Chennai</div>
               <div style="font-size:13.5px;opacity:.85;line-height:1.7;">Plot 14, Industrial Estate<br />Anna Nagar, Chennai – 600040</div>
-              <div style="margin-top:14px;font-size:13.5px;opacity:.85;">+91 98400 12345</div>
+              <div style="margin-top:14px;font-size:13.5px;opacity:.85;"><i class="fa-solid fa-phone me-2"></i>+91 98400 12345</div>
             </div>
           </div>
         </div>
@@ -382,7 +336,7 @@
               <div style="font-size:13px;font-weight:700;letter-spacing:.06em;opacity:.75;margin-bottom:8px;">BRANCH OFFICE</div>
               <div style="font-size:18px;font-weight:800;margin-bottom:14px;">Bangalore</div>
               <div style="font-size:13.5px;opacity:.85;line-height:1.7;">No. 7, Koramangala 3rd Block<br />Bangalore – 560034</div>
-              <div style="margin-top:14px;font-size:13.5px;opacity:.85;">+91 98001 45678</div>
+              <div style="margin-top:14px;font-size:13.5px;opacity:.85;"><i class="fa-solid fa-phone me-2"></i>+91 98001 45678</div>
             </div>
           </div>
         </div>
@@ -396,7 +350,7 @@
               <div style="font-size:13px;font-weight:700;letter-spacing:.06em;opacity:.75;margin-bottom:8px;">BRANCH OFFICE</div>
               <div style="font-size:18px;font-weight:800;margin-bottom:14px;">Mumbai</div>
               <div style="font-size:13.5px;opacity:.85;line-height:1.7;">Andheri West, MIDC Area<br />Mumbai – 400053</div>
-              <div style="margin-top:14px;font-size:13.5px;opacity:.85;">+91 99871 23456</div>
+              <div style="margin-top:14px;font-size:13.5px;opacity:.85;"><i class="fa-solid fa-phone me-2"></i>+91 99871 23456</div>
             </div>
           </div>
         </div>

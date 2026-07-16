@@ -1015,3 +1015,59 @@ body:has(.auth-page) {
     font-size: inherit !important;
   }
 }
+
+/* Final auth cleanup: no placeholder field icons, official social logo colors, and bottom account link. */
+.auth-page .auth-input {
+  padding-left: 16px !important;
+  padding-right: 44px !important;
+}
+
+[dir="rtl"] .auth-page .auth-input {
+  padding-left: 44px !important;
+  padding-right: 16px !important;
+}
+
+.auth-page .auth-input-icon {
+  display: none !important;
+}
+
+.auth-switch-link {
+  margin: 8px 0 0 !important;
+  text-align: center !important;
+  color: var(--text-muted) !important;
+  font-size: 13.5px !important;
+  line-height: 1.45 !important;
+}
+
+.auth-page .social-auth-btn {
+  font-weight: 700 !important;
+}
+
+.auth-page .social-auth-btn i,
+[data-theme="dark"] .auth-page .social-auth-btn i {
+  font-size: 16px !important;
+  opacity: 1 !important;
+}
+
+.auth-page .social-google i,
+[data-theme="dark"] .auth-page .social-google i {
+  background: conic-gradient(from -45deg, #4285F4 0 25%, #34A853 0 50%, #FBBC05 0 75%, #EA4335 0 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+.auth-page .social-facebook i,
+[data-theme="dark"] .auth-page .social-facebook i {
+  color: #1877F2 !important;
+}
+
+.auth-page .social-apple i,
+[data-theme="dark"] .auth-page .social-apple i {
+  color: #000000 !important;
+}
+
+.auth-page .social-auth-btn:hover i,
+[data-theme="dark"] .auth-page .social-auth-btn:hover i {
+  opacity: 1 !important;
+}
