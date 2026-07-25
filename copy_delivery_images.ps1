@@ -33,5 +33,11 @@ Copy-Item "$SRC\product_bookmarks_1783963865951.png" -Destination "$DST\product_
 # About Page Journey Image
 Copy-Item "C:\Users\NIVETHA\.gemini\antigravity-ide\brain\1433e77b-ff58-4538-afae-4b7c8896ba8a\about_journey_clean_1784168690579.png" -Destination "$DST\about_journey_clean.png" -Force
 
+# Hero Print Mockup & Banner Images
+Copy-Item "C:\Users\NIVETHA\.gemini\antigravity-ide\brain\9cc01bb4-d897-4782-8b10-37ea2616c0c7\hero_print_mockup_1784974739644.png" -Destination "$DST\hero_print_mockup.png" -Force
+Copy-Item "C:\Users\NIVETHA\.gemini\antigravity-ide\brain\9cc01bb4-d897-4782-8b10-37ea2616c0c7\banner_home_hero_bg_1784974987682.png" -Destination "$DST\banners\home.png" -Force
+
 Write-Host "Done! Copying complete."
+
+
 

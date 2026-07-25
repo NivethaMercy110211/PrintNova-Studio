@@ -71,6 +71,10 @@
   /* Dark Mode Text: #FFFFFF */
   --text-secondary: #E2E8F0;
   --text-muted: #94A3B8;
+  --pn-blue: #38BDF8;
+  --pn-blue-dark: #7EC8E3;
+  --pn-blue-light: rgba(56, 189, 248, 0.18);
+  --pn-ink: #38BDF8;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, .3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, .4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, .5);
@@ -2201,8 +2205,7 @@ body {
 .hero-gradient-1,
 .hero-gradient-2,
 .cta-section,
-.section-blue-bg,
-.pricing-card.featured {
+.section-blue-bg {
   background: var(--banner-bg);
 }
 
@@ -2472,7 +2475,6 @@ section[style*="banners/"] .breadcrumb-item a {
 .cta-section,
 .section-blue-bg,
 .section-dark-bg,
-.pricing-card.featured,
 .db-welcome {
   background-color: var(--pn-ink) !important;
 }
@@ -2495,8 +2497,6 @@ section[style*="banners/"] .breadcrumb-item a {
 .cta-sub,
 .pn-footer,
 .pn-footer *,
-.pricing-card.featured,
-.pricing-card.featured *,
 .section-blue-bg,
 .section-blue-bg *,
 .section-dark-bg,
@@ -2515,7 +2515,6 @@ section[style*="banners/"] .breadcrumb-item a {
 .author-avatar,
 .auth-logo,
 .product-tag,
-.pricing-popular,
 .badge-pn,
 .badge-success,
 .badge-warning,
@@ -2549,7 +2548,7 @@ section[style*="banners/"] .breadcrumb-item a {
 .social-auth-btn:hover,
 .pn-card:hover,
 .product-card:hover,
-.pricing-card:hover,
+.pricing-card:not(.featured):hover,
 .testimonial-card:hover,
 .step-card:hover {
   background: var(--pn-ink) !important;
@@ -2562,7 +2561,7 @@ section[style*="banners/"] .breadcrumb-item a {
 .btn-nav-login:hover *,
 .pn-card:hover .pn-card-icon,
 .product-card:hover *,
-.pricing-card:hover *,
+.pricing-card:not(.featured):hover *,
 .testimonial-card:hover *,
 .step-card:hover * {
   color: var(--pn-paper) !important;
@@ -2587,8 +2586,8 @@ section[style*="banners/"] .breadcrumb-item a {
 }
 
 .testimonial-stars,
-.pricing-feature .fa-check,
-.pricing-card.featured .pricing-feature .fa-check,
+.pricing-feature:not(.featured *).fa-check,
+.pricing-card:not(.featured) .pricing-feature .fa-check,
 .auth-visual-features li i,
 .social-auth-btn .fa-google,
 .social-auth-btn .fa-facebook,
@@ -3363,10 +3362,7 @@ section[style*="images/banners/services.png"] .breadcrumb-item a {
   color: #7EC8E3 !important;
 }
 
-/* Pricing featured card stays dark */
-[data-theme="dark"] .pricing-card.featured {
-  background: var(--pn-ink) !important;
-}
+
 
 /* Product price tag */
 [data-theme="dark"] .product-price {
@@ -3604,12 +3600,12 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 /* Final hover icon visibility fix across the website. */
 .pn-card:hover .pn-card-icon,
 .product-card:hover .pn-card-icon,
-.pricing-card:hover .pn-card-icon,
+.pricing-card:not(.featured):hover .pn-card-icon,
 .testimonial-card:hover .pn-card-icon,
 .step-card:hover .pn-card-icon,
 .pn-card:hover [class*="icon-"],
 .product-card:hover [class*="icon-"],
-.pricing-card:hover [class*="icon-"],
+.pricing-card:not(.featured):hover [class*="icon-"],
 .testimonial-card:hover [class*="icon-"],
 .step-card:hover [class*="icon-"] {
   background: var(--pn-paper) !important;
@@ -3619,12 +3615,12 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 
 .pn-card:hover .pn-card-icon i,
 .product-card:hover .pn-card-icon i,
-.pricing-card:hover .pn-card-icon i,
+.pricing-card:not(.featured):hover .pn-card-icon i,
 .testimonial-card:hover .pn-card-icon i,
 .step-card:hover .pn-card-icon i,
 .pn-card:hover [class*="icon-"] i,
 .product-card:hover [class*="icon-"] i,
-.pricing-card:hover [class*="icon-"] i,
+.pricing-card:not(.featured):hover [class*="icon-"] i,
 .testimonial-card:hover [class*="icon-"] i,
 .step-card:hover [class*="icon-"] i {
   color: var(--pn-ink) !important;
@@ -3656,12 +3652,12 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 
 [data-theme="dark"] .pn-card:hover .pn-card-icon,
 [data-theme="dark"] .product-card:hover .pn-card-icon,
-[data-theme="dark"] .pricing-card:hover .pn-card-icon,
+[data-theme="dark"] .pricing-card:not(.featured):hover .pn-card-icon,
 [data-theme="dark"] .testimonial-card:hover .pn-card-icon,
 [data-theme="dark"] .step-card:hover .pn-card-icon,
 [data-theme="dark"] .pn-card:hover [class*="icon-"],
 [data-theme="dark"] .product-card:hover [class*="icon-"],
-[data-theme="dark"] .pricing-card:hover [class*="icon-"],
+[data-theme="dark"] .pricing-card:not(.featured):hover [class*="icon-"],
 [data-theme="dark"] .testimonial-card:hover [class*="icon-"],
 [data-theme="dark"] .step-card:hover [class*="icon-"] {
   background: rgba(126, 200, 227, .18) !important;
@@ -3671,12 +3667,12 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 
 [data-theme="dark"] .pn-card:hover .pn-card-icon i,
 [data-theme="dark"] .product-card:hover .pn-card-icon i,
-[data-theme="dark"] .pricing-card:hover .pn-card-icon i,
+[data-theme="dark"] .pricing-card:not(.featured):hover .pn-card-icon i,
 [data-theme="dark"] .testimonial-card:hover .pn-card-icon i,
 [data-theme="dark"] .step-card:hover .pn-card-icon i,
 [data-theme="dark"] .pn-card:hover [class*="icon-"] i,
 [data-theme="dark"] .product-card:hover [class*="icon-"] i,
-[data-theme="dark"] .pricing-card:hover [class*="icon-"] i,
+[data-theme="dark"] .pricing-card:not(.featured):hover [class*="icon-"] i,
 [data-theme="dark"] .testimonial-card:hover [class*="icon-"] i,
 [data-theme="dark"] .step-card:hover [class*="icon-"] i {
   color: #7EC8E3 !important;
@@ -3709,7 +3705,6 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 /* Absolute final icon hover contrast guard. */
 .pn-card:hover i,
 .product-card:hover i,
-.pricing-card:hover i,
 .testimonial-card:hover i,
 .step-card:hover i,
 .section-badge:hover i,
@@ -3742,12 +3737,10 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 
 .pn-card:hover .pn-card-icon,
 .product-card:hover .pn-card-icon,
-.pricing-card:hover .pn-card-icon,
 .testimonial-card:hover .pn-card-icon,
 .step-card:hover .pn-card-icon,
 .pn-card:hover [class*="icon-"],
 .product-card:hover [class*="icon-"],
-.pricing-card:hover [class*="icon-"],
 .testimonial-card:hover [class*="icon-"],
 .step-card:hover [class*="icon-"] {
   background: var(--pn-ink) !important;
@@ -3757,12 +3750,10 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 
 .pn-card:hover .pn-card-icon i,
 .product-card:hover .pn-card-icon i,
-.pricing-card:hover .pn-card-icon i,
 .testimonial-card:hover .pn-card-icon i,
 .step-card:hover .pn-card-icon i,
 .pn-card:hover [class*="icon-"] i,
 .product-card:hover [class*="icon-"] i,
-.pricing-card:hover [class*="icon-"] i,
 .testimonial-card:hover [class*="icon-"] i,
 .step-card:hover [class*="icon-"] i {
   color: var(--pn-paper) !important;
@@ -3770,7 +3761,7 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 
 [data-theme="dark"] .pn-card:hover i,
 [data-theme="dark"] .product-card:hover i,
-[data-theme="dark"] .pricing-card:hover i,
+[data-theme="dark"] .pricing-card:not(.featured):hover i,
 [data-theme="dark"] .testimonial-card:hover i,
 [data-theme="dark"] .step-card:hover i,
 [data-theme="dark"] .section-badge:hover i,
@@ -3809,12 +3800,12 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 
 .pn-card:hover .pn-card-icon,
 .product-card:hover .pn-card-icon,
-.pricing-card:hover .pn-card-icon,
+.pricing-card:not(.featured):hover .pn-card-icon,
 .testimonial-card:hover .pn-card-icon,
 .step-card:hover .pn-card-icon,
 .pn-card:hover [class*="icon-"],
 .product-card:hover [class*="icon-"],
-.pricing-card:hover [class*="icon-"],
+.pricing-card:not(.featured):hover [class*="icon-"],
 .testimonial-card:hover [class*="icon-"],
 .step-card:hover [class*="icon-"] {
   background: var(--pn-ink) !important;
@@ -3824,12 +3815,12 @@ section[style*="images/banners/services.png"] .btn-pn:hover,
 
 .pn-card:hover .pn-card-icon i,
 .product-card:hover .pn-card-icon i,
-.pricing-card:hover .pn-card-icon i,
+.pricing-card:not(.featured):hover .pn-card-icon i,
 .testimonial-card:hover .pn-card-icon i,
 .step-card:hover .pn-card-icon i,
 .pn-card:hover [class*="icon-"] i,
 .product-card:hover [class*="icon-"] i,
-.pricing-card:hover [class*="icon-"] i,
+.pricing-card:not(.featured):hover [class*="icon-"] i,
 .testimonial-card:hover [class*="icon-"] i,
 .step-card:hover [class*="icon-"] i {
   color: #FFFFFF !important;
@@ -4681,176 +4672,7 @@ section[aria-label="Social"] .social-btn:hover {
   }
 }
 
-/* Pricing page Business Card cards: popular card and regular cards use opposite states. */
-.pricing-business-cards .pricing-card.featured {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border: 1.5px solid rgba(63, 111, 143, .18) !important;
-  box-shadow: 0 14px 34px rgba(63, 111, 143, .12) !important;
-}
 
-.pricing-business-cards .pricing-card.featured *,
-.pricing-business-cards .pricing-card.featured .pricing-price,
-.pricing-business-cards .pricing-card.featured .pricing-period,
-.pricing-business-cards .pricing-card.featured .pricing-feature,
-.pricing-business-cards .pricing-card.featured .pricing-feature i {
-  color: var(--pn-ink) !important;
-}
-
-.pricing-business-cards .pricing-card.featured .pricing-popular {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-}
-
-.pricing-business-cards .pricing-card.featured .btn-pn-white {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-  border-color: var(--pn-ink) !important;
-}
-
-.pricing-business-cards .pricing-card.featured:hover {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-  border-color: var(--pn-ink) !important;
-}
-
-.pricing-business-cards .pricing-card.featured:hover *,
-.pricing-business-cards .pricing-card.featured:hover .pricing-price,
-.pricing-business-cards .pricing-card.featured:hover .pricing-period,
-.pricing-business-cards .pricing-card.featured:hover .pricing-feature,
-.pricing-business-cards .pricing-card.featured:hover .pricing-feature i {
-  color: #FFFFFF !important;
-}
-
-.pricing-business-cards .pricing-card.featured:hover .pricing-popular,
-.pricing-business-cards .pricing-card.featured:hover .btn-pn-white {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border-color: #FFFFFF !important;
-}
-
-.pricing-business-cards .pricing-card:not(.featured) {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-  border: 1.5px solid var(--pn-ink) !important;
-}
-
-.pricing-business-cards .pricing-card:not(.featured) *,
-.pricing-business-cards .pricing-card:not(.featured) .pricing-price,
-.pricing-business-cards .pricing-card:not(.featured) .pricing-period,
-.pricing-business-cards .pricing-card:not(.featured) .pricing-feature,
-.pricing-business-cards .pricing-card:not(.featured) .pricing-feature i {
-  color: #FFFFFF !important;
-}
-
-.pricing-business-cards .pricing-card:not(.featured) .btn-pn-outline {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border-color: #FFFFFF !important;
-}
-
-.pricing-business-cards .pricing-card:not(.featured):hover {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border-color: rgba(63, 111, 143, .18) !important;
-}
-
-.pricing-business-cards .pricing-card:not(.featured):hover *,
-.pricing-business-cards .pricing-card:not(.featured):hover .pricing-price,
-.pricing-business-cards .pricing-card:not(.featured):hover .pricing-period,
-.pricing-business-cards .pricing-card:not(.featured):hover .pricing-feature,
-.pricing-business-cards .pricing-card:not(.featured):hover .pricing-feature i {
-  color: var(--pn-ink) !important;
-}
-
-.pricing-business-cards .pricing-card:not(.featured):hover .btn-pn-outline {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-  border-color: var(--pn-ink) !important;
-}
-
-/* Pricing page Bulk Order Discount Plans hover contrast fix. */
-.pricing-bulk-plans .pricing-card:not(.featured) {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border: 1.5px solid rgba(63, 111, 143, .18) !important;
-}
-
-.pricing-bulk-plans .pricing-card:not(.featured) *,
-.pricing-bulk-plans .pricing-card:not(.featured) .pricing-price,
-.pricing-bulk-plans .pricing-card:not(.featured) .pricing-period,
-.pricing-bulk-plans .pricing-card:not(.featured) .pricing-feature,
-.pricing-bulk-plans .pricing-card:not(.featured) .pricing-feature i {
-  color: var(--pn-ink) !important;
-}
-
-.pricing-bulk-plans .pricing-card:not(.featured) .btn-pn-outline {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-  border-color: var(--pn-ink) !important;
-}
-
-.pricing-bulk-plans .pricing-card:not(.featured):hover {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-  border-color: var(--pn-ink) !important;
-}
-
-.pricing-bulk-plans .pricing-card:not(.featured):hover *,
-.pricing-bulk-plans .pricing-card:not(.featured):hover .pricing-price,
-.pricing-bulk-plans .pricing-card:not(.featured):hover .pricing-period,
-.pricing-bulk-plans .pricing-card:not(.featured):hover .pricing-feature,
-.pricing-bulk-plans .pricing-card:not(.featured):hover .pricing-feature i {
-  color: #FFFFFF !important;
-}
-
-.pricing-bulk-plans .pricing-card:not(.featured):hover .btn-pn-outline {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border-color: #FFFFFF !important;
-}
-
-.pricing-bulk-plans .pricing-card.featured {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-  border-color: var(--pn-ink) !important;
-}
-
-.pricing-bulk-plans .pricing-card.featured *,
-.pricing-bulk-plans .pricing-card.featured .pricing-price,
-.pricing-bulk-plans .pricing-card.featured .pricing-period,
-.pricing-bulk-plans .pricing-card.featured .pricing-feature,
-.pricing-bulk-plans .pricing-card.featured .pricing-feature i {
-  color: #FFFFFF !important;
-}
-
-.pricing-bulk-plans .pricing-card.featured .pricing-popular,
-.pricing-bulk-plans .pricing-card.featured .btn-pn-white {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border-color: #FFFFFF !important;
-}
-
-.pricing-bulk-plans .pricing-card.featured:hover {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border-color: rgba(63, 111, 143, .18) !important;
-}
-
-.pricing-bulk-plans .pricing-card.featured:hover *,
-.pricing-bulk-plans .pricing-card.featured:hover .pricing-price,
-.pricing-bulk-plans .pricing-card.featured:hover .pricing-period,
-.pricing-bulk-plans .pricing-card.featured:hover .pricing-feature,
-.pricing-bulk-plans .pricing-card.featured:hover .pricing-feature i {
-  color: var(--pn-ink) !important;
-}
-
-.pricing-bulk-plans .pricing-card.featured:hover .pricing-popular,
-.pricing-bulk-plans .pricing-card.featured:hover .btn-pn-white {
-  background: var(--pn-ink) !important;
-  color: #FFFFFF !important;
-  border-color: var(--pn-ink) !important;
-}
 
 /* Stronger separation between Volume Pricing and FAQ on pricing page. */
 .pricing-savings-section .pricing-savings-panel {
@@ -5382,18 +5204,7 @@ html[data-theme="dark"] .product-card:hover h5,
 html[data-theme="dark"] .product-card:hover h6,
 html[data-theme="dark"] .product-card:hover p,
 html[data-theme="dark"] .product-card:hover span:not([class*="icon"]),
-html[data-theme="dark"] .pricing-card:hover .pricing-title,
-html[data-theme="dark"] .pricing-card:hover .pricing-price,
-html[data-theme="dark"] .pricing-card:hover .pricing-period,
-html[data-theme="dark"] .pricing-card:hover .pricing-feature,
-html[data-theme="dark"] .pricing-card:hover h1,
-html[data-theme="dark"] .pricing-card:hover h2,
-html[data-theme="dark"] .pricing-card:hover h3,
-html[data-theme="dark"] .pricing-card:hover h4,
-html[data-theme="dark"] .pricing-card:hover h5,
-html[data-theme="dark"] .pricing-card:hover h6,
-html[data-theme="dark"] .pricing-card:hover p,
-html[data-theme="dark"] .pricing-card:hover span:not([class*="icon"]),
+
 html[data-theme="dark"] .testimonial-card:hover .testimonial-text,
 html[data-theme="dark"] .testimonial-card:hover .author-name,
 html[data-theme="dark"] .testimonial-card:hover .author-role,
@@ -6797,79 +6608,588 @@ section[aria-label="Volume Discounts"] .pricing-savings-panel .row.g-4 .pn-card-
     padding-left: 12px !important;
     padding-right: 12px !important;
   }
+
+
+/* ── PRICING CARD STYLING & DARK MODE VISIBILITY FIXES ── */
+
+/* ==========================================
+   1. LIGHT MODE (Default & [data-theme="light"])
+   ========================================== */
+
+/* Sub Grids (Outside Standard Cards) - Highlighted with #3F6F8F Border & Glow */
+.pricing-card:not(.featured) {
+  background-color: #FFFFFF !important;
+  border: 2px solid rgba(63, 111, 143, 0.35) !important;
+  box-shadow: 0 8px 24px rgba(63, 111, 143, 0.12) !important;
+  transform: none !important;
+  z-index: 1 !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
 
-/* Final navbar CTA order: Dashboard is primary, Login is secondary. */
-.pn-navbar .nav-link[href="dashboard.html"],
-.offcanvas .nav-link[href="dashboard.html"] {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
-  background: var(--pn-ink) !important;
+.pricing-card:not(.featured):hover {
+  background-color: #FFFFFF !important;
+  border: 2.5px solid #3F6F8F !important;
+  box-shadow: 0 16px 36px rgba(63, 111, 143, 0.28) !important;
+  transform: translateY(-6px) !important;
+}
+
+.pricing-card:not(.featured) div,
+.pricing-card:not(.featured) h1,
+.pricing-card:not(.featured) h2,
+.pricing-card:not(.featured) h3,
+.pricing-card:not(.featured) h4,
+.pricing-card:not(.featured) h5,
+.pricing-card:not(.featured) h6,
+.pricing-card:not(.featured) p,
+.pricing-card:not(.featured) .pricing-price {
+  color: #0F172A !important;
+}
+
+.pricing-card:not(.featured) .pricing-period {
+  color: #64748B !important;
+}
+
+.pricing-card:not(.featured) .pricing-feature {
+  color: #334155 !important;
+}
+
+.pricing-card:not(.featured) .pricing-feature i {
+  color: #3F6F8F !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.pricing-card:not(.featured) .btn-pn-outline {
+  background-color: #FFFFFF !important;
+  color: #3F6F8F !important;
+  border: 1.5px solid #3F6F8F !important;
+  font-weight: 700 !important;
+}
+
+.pricing-card:not(.featured) .btn-pn-outline:hover {
+  background-color: #3F6F8F !important;
   color: #FFFFFF !important;
-  border: 1.5px solid var(--pn-ink) !important;
-  border-radius: 40px !important;
-  font-weight: 800 !important;
-  box-shadow: 0 8px 20px rgba(63, 111, 143, .18) !important;
 }
 
-.pn-navbar .nav-link[href="dashboard.html"]:hover,
-.pn-navbar .nav-link[href="dashboard.html"]:focus,
-.offcanvas .nav-link[href="dashboard.html"]:hover,
-.offcanvas .nav-link[href="dashboard.html"]:focus {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border-color: var(--pn-ink) !important;
-}
-
-.pn-navbar .nav-link[href="dashboard.html"] i,
-.offcanvas .nav-link[href="dashboard.html"] i {
-  color: currentColor !important;
-}
-
-.btn-nav-login,
-.offcanvas .btn-pn-primary[href="login.html"],
-a[href="login.html"].btn-pn-primary:not(.auth-page a),
-[data-theme="dark"] .btn-nav-login,
-[data-theme="dark"] .offcanvas .btn-pn-primary[href="login.html"],
-[data-theme="dark"] a[href="login.html"].btn-pn-primary:not(.auth-page a) {
-  background: #FFFFFF !important;
-  color: var(--pn-ink) !important;
-  border: 1.5px solid var(--pn-ink) !important;
-  box-shadow: none !important;
-}
-
-.btn-nav-login:hover,
-.btn-nav-login:focus,
-.offcanvas .btn-pn-primary[href="login.html"]:hover,
-.offcanvas .btn-pn-primary[href="login.html"]:focus,
-a[href="login.html"].btn-pn-primary:not(.auth-page a):hover,
-a[href="login.html"].btn-pn-primary:not(.auth-page a):focus,
-[data-theme="dark"] .btn-nav-login:hover,
-[data-theme="dark"] .btn-nav-login:focus,
-[data-theme="dark"] .offcanvas .btn-pn-primary[href="login.html"]:hover,
-[data-theme="dark"] .offcanvas .btn-pn-primary[href="login.html"]:focus,
-[data-theme="dark"] a[href="login.html"].btn-pn-primary:not(.auth-page a):hover,
-[data-theme="dark"] a[href="login.html"].btn-pn-primary:not(.auth-page a):focus {
-  background: var(--pn-ink) !important;
+.pricing-card:not(.featured) .btn-pn-outline:hover * {
   color: #FFFFFF !important;
-  border-color: var(--pn-ink) !important;
 }
 
-.btn-nav-login *,
-.offcanvas .btn-pn-primary[href="login.html"] *,
-a[href="login.html"].btn-pn-primary:not(.auth-page a) *,
-[data-theme="dark"] .btn-nav-login *,
-[data-theme="dark"] .offcanvas .btn-pn-primary[href="login.html"] *,
-[data-theme="dark"] a[href="login.html"].btn-pn-primary:not(.auth-page a) * {
-  color: currentColor !important;
+/* Spot UV Gloss, Indoor Display, Enterprise Bulk Featured Pricing Cards: Solid #3F6F8F Grid & Border for Light and Dark Theme */
+.pricing-card.featured,
+.pricing-card.featured:hover,
+[data-theme="dark"] .pricing-card.featured,
+[data-theme="dark"] .pricing-card.featured:hover {
+  background-color: #3F6F8F !important;
+  background: #3F6F8F !important;
+  border: 3px solid #3F6F8F !important;
+  box-shadow: 0 0 0 3px rgba(63, 111, 143, 0.35), 0 22px 50px rgba(63, 111, 143, 0.45) !important;
+  position: relative !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  transform: scale(1.03) !important;
+  z-index: 5 !important;
 }
 
-@media (max-width: 991.98px) {
-  .offcanvas .nav-link[href="dashboard.html"],
-  .offcanvas .btn-pn-primary[href="login.html"] {
-    width: 100% !important;
-    min-height: 44px !important;
+/* Responsive Highlight Scale & Elevation for iPad Mini (768px+), iPad Pro (834px/1024px+), and Desktop */
+@media (min-width: 768px) {
+  .pricing-card.featured {
+    transform: scale(1.05) translateY(-6px) !important;
+    z-index: 5 !important;
   }
+  .pricing-card.featured:hover {
+    transform: scale(1.08) translateY(-10px) !important;
+  }
+}
+
+/* All Text, List Items, and Tick Icons (i.fa-check) inside Featured Cards: ALWAYS PURE WHITE (#FFFFFF) in Light & Dark Theme (Excluding Badges & Buttons) */
+.pricing-card.featured,
+.pricing-card.featured *:not(.pricing-popular):not(.pricing-popular *):not(.btn-pn):not(.btn-pn *),
+.pricing-card.featured:hover *:not(.pricing-popular):not(.pricing-popular *):not(.btn-pn):not(.btn-pn *),
+[data-theme="dark"] .pricing-card.featured *:not(.pricing-popular):not(.pricing-popular *):not(.btn-pn):not(.btn-pn *),
+[data-theme="dark"] .pricing-card.featured:hover *:not(.pricing-popular):not(.pricing-popular *):not(.btn-pn):not(.btn-pn *),
+.pricing-card.featured div:not(.btn-pn):not(.pricing-popular),
+.pricing-card.featured h1,
+.pricing-card.featured h2,
+.pricing-card.featured h3,
+.pricing-card.featured h4,
+.pricing-card.featured h5,
+.pricing-card.featured h6,
+.pricing-card.featured p,
+.pricing-card.featured span:not(.btn-pn *):not(.pricing-popular),
+.pricing-card.featured li,
+.pricing-card.featured .pricing-price,
+.pricing-card.featured .pricing-period,
+.pricing-card.featured .pricing-feature,
+.pricing-card.featured .pricing-feature i,
+.pricing-card.featured .pricing-feature .fa-check,
+.pricing-card.featured:hover .pricing-feature i,
+.pricing-card.featured:hover .pricing-feature .fa-check,
+[data-theme="dark"] .pricing-card.featured .pricing-feature i,
+[data-theme="dark"] .pricing-card.featured .pricing-feature .fa-check {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Featured Card Buttons & Button Icons: ALWAYS WHITE (#FFFFFF) Background with Bold #3F6F8F Text & Icons */
+.pricing-card.featured .btn-pn,
+.pricing-card.featured a.btn-pn,
+.pricing-card.featured .btn-pn-white,
+.pricing-card.featured a.btn-pn-white,
+.pricing-card.featured .btn-pn:hover,
+.pricing-card.featured a.btn-pn:hover,
+.pricing-card.featured .btn-pn-white:hover,
+.pricing-card.featured a.btn-pn-white:hover,
+[data-theme="dark"] .pricing-card.featured .btn-pn,
+[data-theme="dark"] .pricing-card.featured a.btn-pn,
+[data-theme="dark"] .pricing-card.featured .btn-pn-white,
+[data-theme="dark"] .pricing-card.featured a.btn-pn-white,
+[data-theme="dark"] .pricing-card.featured .btn-pn:hover,
+[data-theme="dark"] .pricing-card.featured a.btn-pn:hover,
+[data-theme="dark"] .pricing-card.featured .btn-pn-white:hover,
+[data-theme="dark"] .pricing-card.featured a.btn-pn-white:hover {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #3F6F8F !important;
+  border: none !important;
+  font-weight: 800 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.pricing-card.featured .btn-pn *,
+.pricing-card.featured a.btn-pn *,
+.pricing-card.featured .btn-pn-white *,
+.pricing-card.featured a.btn-pn-white *,
+.pricing-card.featured .btn-pn i,
+.pricing-card.featured a.btn-pn i,
+.pricing-card.featured .btn-pn-white i,
+.pricing-card.featured a.btn-pn-white i,
+.pricing-card.featured .btn-pn:hover *,
+.pricing-card.featured a.btn-pn:hover *,
+.pricing-card.featured .btn-pn-white:hover *,
+.pricing-card.featured a.btn-pn-white:hover *,
+.pricing-card.featured .btn-pn:hover i,
+.pricing-card.featured a.btn-pn:hover i,
+.pricing-card.featured .btn-pn-white:hover i,
+.pricing-card.featured a.btn-pn-white:hover i,
+[data-theme="dark"] .pricing-card.featured .btn-pn *,
+[data-theme="dark"] .pricing-card.featured a.btn-pn *,
+[data-theme="dark"] .pricing-card.featured .btn-pn-white *,
+[data-theme="dark"] .pricing-card.featured a.btn-pn-white *,
+[data-theme="dark"] .pricing-card.featured .btn-pn i,
+[data-theme="dark"] .pricing-card.featured a.btn-pn i,
+[data-theme="dark"] .pricing-card.featured .btn-pn-white i,
+[data-theme="dark"] .pricing-card.featured a.btn-pn-white i,
+[data-theme="dark"] .pricing-card.featured .btn-pn:hover *,
+[data-theme="dark"] .pricing-card.featured a.btn-pn:hover *,
+[data-theme="dark"] .pricing-card.featured .btn-pn-white:hover *,
+[data-theme="dark"] .pricing-card.featured a.btn-pn-white:hover *,
+[data-theme="dark"] .pricing-card.featured .btn-pn:hover i,
+[data-theme="dark"] .pricing-card.featured a.btn-pn:hover i,
+[data-theme="dark"] .pricing-card.featured .btn-pn-white:hover i,
+[data-theme="dark"] .pricing-card.featured a.btn-pn-white:hover i {
+  color: #3F6F8F !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Most Popular / Best Value / Best Discount Badge Styling - Locked Color on Hover */
+.pricing-card,
+.pricing-card.featured,
+.pn-card {
+  overflow: visible !important;
+}
+
+.pricing-popular,
+.pricing-card:hover .pricing-popular,
+.pricing-card.featured:hover .pricing-popular,
+.pn-card:hover .pricing-popular {
+  background: #FFFFFF !important;
+  color: #3F6F8F !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 6px 22px !important;
+  border-radius: 20px !important;
+  border: 2px solid #3F6F8F !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.30) !important;
+  top: -14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  position: absolute !important;
+  z-index: 30 !important;
+  white-space: nowrap !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.pricing-popular *,
+.pricing-card:hover .pricing-popular *,
+.pricing-card.featured:hover .pricing-popular *,
+.pn-card:hover .pricing-popular * {
+  color: #3F6F8F !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-theme="dark"] .pricing-popular,
+[data-theme="dark"] .pricing-card:hover .pricing-popular,
+[data-theme="dark"] .pricing-card.featured:hover .pricing-popular,
+[data-theme="dark"] .pn-card:hover .pricing-popular {
+  background: #38BDF8 !important;
+  color: #0F172A !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.45) !important;
+  top: -14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  position: absolute !important;
+  z-index: 30 !important;
+  white-space: nowrap !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-theme="dark"] .pricing-popular *,
+[data-theme="dark"] .pricing-card:hover .pricing-popular *,
+[data-theme="dark"] .pricing-card.featured:hover .pricing-popular *,
+[data-theme="dark"] .pn-card:hover .pricing-popular * {
+  color: #0F172A !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ==========================================
+   2. DARK MODE ([data-theme="dark"])
+   ========================================== */
+
+[data-theme="dark"] .pricing-card:not(.featured) {
+  background-color: #0F172A !important;
+  border: 2px solid rgba(63, 111, 143, 0.50) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .pricing-card:not(.featured):hover {
+  background-color: #1E293B !important;
+  border: 2.5px solid #38BDF8 !important;
+  box-shadow: 0 16px 36px rgba(56, 189, 248, 0.30) !important;
+}
+
+[data-theme="dark"] .pricing-card:not(.featured),
+[data-theme="dark"] .pricing-card:not(.featured) *,
+[data-theme="dark"] .pricing-card:not(.featured) div,
+[data-theme="dark"] .pricing-card:not(.featured) span,
+[data-theme="dark"] .pricing-card:not(.featured) li,
+[data-theme="dark"] .pricing-card:not(.featured) p,
+[data-theme="dark"] .pricing-card:not(.featured) h1,
+[data-theme="dark"] .pricing-card:not(.featured) h2,
+[data-theme="dark"] .pricing-card:not(.featured) h3,
+[data-theme="dark"] .pricing-card:not(.featured) h4,
+[data-theme="dark"] .pricing-card:not(.featured) h5,
+[data-theme="dark"] .pricing-card:not(.featured) h6,
+[data-theme="dark"] .pricing-card:not(.featured) .pricing-price,
+[data-theme="dark"] .pricing-card:not(.featured) .pricing-feature {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .pricing-card:not(.featured) .pricing-period {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .pricing-card:not(.featured) .pricing-feature i {
+  color: #38BDF8 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-theme="dark"] .pricing-card:not(.featured) .btn-pn-outline {
+  background-color: transparent !important;
+  color: #38BDF8 !important;
+  border: 1.5px solid #38BDF8 !important;
+}
+
+[data-theme="dark"] .pricing-card:not(.featured) .btn-pn-outline:hover {
+  background-color: #38BDF8 !important;
+  color: #0F172A !important;
+}
+
+[data-theme="dark"] .pricing-card:not(.featured) .btn-pn-outline:hover * {
+  color: #0F172A !important;
+}
+
+/* ================================================================
+   SERVICES PAGE SECTION 1 BELOW HERO - DARK MODE CONTRAST FIXES
+   ================================================================ */
+.service-lead-text {
+  color: #475569;
+}
+.service-item-title {
+  color: #0F172A;
+}
+.service-item-desc {
+  color: #475569;
+}
+.service-icon-box {
+  background: rgba(63, 111, 143, 0.12);
+  color: #3F6F8F;
+}
+.service-spec-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+}
+.service-spec-title {
+  color: #0F172A;
+}
+.service-spec-title i {
+  color: #3F6F8F;
+}
+.service-tag {
+  background: rgba(63, 111, 143, 0.12);
+  color: #3F6F8F;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  display: inline-block;
+}
+.service-spec-row {
+  background: #FFFFFF;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.spec-label {
+  font-size: 13.5px;
+  color: #0F172A;
+  font-weight: 600;
+}
+.spec-val {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #3F6F8F;
+}
+
+/* Dark Mode Overrides for Services Page Section 1 Below Hero */
+[data-theme="dark"] .service-lead-text {
+  color: #E2E8F0 !important;
+}
+[data-theme="dark"] .service-item-title {
+  color: #F8FAFC !important;
+}
+[data-theme="dark"] .service-item-desc {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .service-icon-box {
+  background: rgba(56, 189, 248, 0.18) !important;
+  color: #38BDF8 !important;
+}
+[data-theme="dark"] .service-icon-box i {
+  color: #38BDF8 !important;
+}
+[data-theme="dark"] .service-spec-card {
+  background: #1E293B !important;
+  border: 1.5px solid rgba(226, 232, 240, 0.18) !important;
+}
+[data-theme="dark"] .service-spec-title {
+  color: #F8FAFC !important;
+}
+[data-theme="dark"] .service-spec-title i {
+  color: #38BDF8 !important;
+}
+[data-theme="dark"] .service-tag {
+  background: rgba(56, 189, 248, 0.18) !important;
+  color: #38BDF8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+[data-theme="dark"] .service-spec-row {
+  background: #0F172A !important;
+  border: 1px solid rgba(226, 232, 240, 0.14) !important;
+}
+[data-theme="dark"] .spec-label {
+  color: #F8FAFC !important;
+}
+[data-theme="dark"] .spec-val {
+  color: #38BDF8 !important;
+}
+
+/* Service Tag Box Grid Styling */
+.service-tag-box {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(63, 111, 143, 0.3);
+  color: #3F6F8F;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(63, 111, 143, 0.08);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.service-tag-box i {
+  color: #3F6F8F;
+  font-size: 14px;
+}
+
+.service-tag-box:hover {
+  border-color: #3F6F8F;
+  background: rgba(63, 111, 143, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Dark Mode Box Grid Styling */
+[data-theme="dark"] .service-tag-box {
+  background: #0F172A !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.35) !important;
+  color: #38BDF8 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .service-tag-box:hover {
+  border-color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.18) !important;
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.25) !important;
+}
+
+[data-theme="dark"] .service-tag-box i {
+  color: #38BDF8 !important;
+}
+
+/* ================================================================
+   SERVICES PAGE CONTAINERS BELOW HERO - DARK MODE COMPLETE CONTRAST
+   ================================================================ */
+html[data-theme="dark"] section[aria-label="File Upload Service"] {
+  background-color: #0F172A !important;
+}
+
+html[data-theme="dark"] section[aria-label="File Upload Service"] h2,
+html[data-theme="dark"] section[aria-label="File Upload Service"] h3,
+html[data-theme="dark"] section[aria-label="File Upload Service"] h4,
+html[data-theme="dark"] section[aria-label="File Upload Service"] .section-title,
+html[data-theme="dark"] section[aria-label="File Upload Service"] .service-item-title,
+html[data-theme="dark"] section[aria-label="File Upload Service"] .service-spec-title,
+html[data-theme="dark"] section[aria-label="File Upload Service"] .spec-label {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] section[aria-label="File Upload Service"] p,
+html[data-theme="dark"] section[aria-label="File Upload Service"] .service-lead-text,
+html[data-theme="dark"] section[aria-label="File Upload Service"] .service-item-desc {
+  color: #F1F5F9 !important;
+}
+
+html[data-theme="dark"] section[aria-label="File Upload Service"] .spec-val {
+  color: #38BDF8 !important;
+  font-weight: 800 !important;
+}
+
+html[data-theme="dark"] section[aria-label="File Upload Service"] .service-spec-card {
+  background-color: #1E293B !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+html[data-theme="dark"] section[aria-label="File Upload Service"] .service-spec-row {
+  background-color: #0F172A !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+html[data-theme="dark"] section[aria-label="File Upload Service"] .service-icon-box {
+  background-color: rgba(56, 189, 248, 0.25) !important;
+  color: #38BDF8 !important;
+}
+
+html[data-theme="dark"] section[aria-label="File Upload Service"] .service-icon-box i {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .service-lead-text,
+[data-theme="dark"] section[aria-label="All Services"] p,
+[data-theme="dark"] section[aria-label="Print Specs"] p,
+[data-theme="dark"] section[aria-label="Bulk Printing"] p,
+[data-theme="dark"] section[aria-label="Delivery"] p {
+  color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .service-item-title,
+[data-theme="dark"] .service-spec-title,
+[data-theme="dark"] .spec-label,
+[data-theme="dark"] section[aria-label="Print Specs"] div[style*="font-weight:700"],
+[data-theme="dark"] section[aria-label="Bulk Printing"] div[style*="font-weight:700"],
+[data-theme="dark"] section[aria-label="Bulk Printing"] div[style*="font-weight:800"],
+[data-theme="dark"] section[aria-label="Delivery"] div[style*="font-weight:700"] {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .service-item-desc,
+[data-theme="dark"] section[aria-label="Print Specs"] div[style*="text-muted"],
+[data-theme="dark"] section[aria-label="Bulk Printing"] div[style*="text-muted"],
+[data-theme="dark"] section[aria-label="Delivery"] div[style*="text-muted"],
+[data-theme="dark"] section[aria-label="Delivery"] .pn-card-text {
+  color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .spec-val,
+[data-theme="dark"] section[aria-label="Bulk Printing"] div[style*="color:var(--pn-blue)"],
+[data-theme="dark"] section[aria-label="Delivery"] div[style*="color:var(--pn-blue)"] {
+  color: #38BDF8 !important;
+}
+
+/* ================================================================
+   GLOBAL DARK MODE - BLUE TEXT HIGH VISIBILITY & CONTRAST OVERRIDES
+   Across all pages (Home, Services, Products, Pricing, Contact, Dashboard, Auth),
+   all blue text, blue labels, blue prices, blue icons, and blue links
+   render in bright glowing cyan (#38BDF8) for maximum visibility.
+   ================================================================ */
+[data-theme="dark"] [style*="color:var(--pn-blue)"],
+[data-theme="dark"] [style*="color: var(--pn-blue)"],
+[data-theme="dark"] [style*="color:#3F6F8F"],
+[data-theme="dark"] [style*="color: #3F6F8F"],
+[data-theme="dark"] [style*="color:#3f6f8f"],
+[data-theme="dark"] [style*="color: #3f6f8f"],
+[data-theme="dark"] [style*="color:#2563EB"],
+[data-theme="dark"] [style*="color: #2563eb"],
+[data-theme="dark"] [style*="color:#0284C7"],
+[data-theme="dark"] [style*="color: #0284C7"],
+[data-theme="dark"] [style*="color:#1D4ED8"],
+[data-theme="dark"] [style*="color: #1D4ED8"],
+[data-theme="dark"] [style*="color:#1E40AF"],
+[data-theme="dark"] [style*="color: #1E40AF"],
+[data-theme="dark"] .text-blue,
+[data-theme="dark"] .text-pn-blue,
+[data-theme="dark"] .pn-blue-text,
+[data-theme="dark"] .pn-card-title[style*="3F6F8F"],
+[data-theme="dark"] .pn-card-title[style*="pn-blue"],
+[data-theme="dark"] .pricing-price,
+[data-theme="dark"] .pricing-period,
+[data-theme="dark"] .pricing-currency,
+[data-theme="dark"] .spec-val,
+[data-theme="dark"] .service-item-title,
+[data-theme="dark"] .service-spec-title i,
+[data-theme="dark"] .nav-link:hover i,
+[data-theme="dark"] .nav-link.active i,
+[data-theme="dark"] .breadcrumb-item a,
+[data-theme="dark"] .footer-links a:hover,
+[data-theme="dark"] .auth-link,
+[data-theme="dark"] .btn-pn-outline,
+[data-theme="dark"] a.btn-pn-outline {
+  color: #38BDF8 !important;
+}
+
+/* Ensure hover rules on standard cards maintain bright cyan text for blue titles/links */
+[data-theme="dark"] .pn-card:hover .pn-card-title[style*="pn-blue"],
+[data-theme="dark"] .pn-card:hover .pn-card-title[style*="3F6F8F"],
+[data-theme="dark"] .pn-card:hover div[style*="color:var(--pn-blue)"],
+[data-theme="dark"] .pn-card:hover div[style*="color: #3F6F8F"] {
+  color: #38BDF8 !important;
 }
