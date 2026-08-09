@@ -1015,6 +1015,23 @@ h6 {
   margin-bottom: 6px;
 }
 
+.pricing-card.text-center .pricing-price {
+  width: 100%;
+  justify-content: center;
+  align-items: baseline;
+  text-align: center;
+}
+
+.pricing-card.text-center .btn-pn {
+  width: 100%;
+  justify-content: center;
+}
+
+.pricing-card.text-center .pricing-feature {
+  justify-content: center;
+  text-align: center;
+}
+
 .pricing-price sup {
   font-size: 20px;
   font-weight: 700;
